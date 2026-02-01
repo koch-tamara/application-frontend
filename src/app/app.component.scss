@@ -1,0 +1,55 @@
+
+$content-background: rgba(216, 117, 77, 0.1);
+$hover-background: rgba(180, 180, 180, 0.25);
+$default-font-color: rgb(40, 40, 40);
+$active-font-color: rgb(216, 117, 77);
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    color: $default-font-color;
+
+    &__header {
+        height: 4rem;
+
+        & .page-layout-container__content {
+            justify-content: flex-end !important;
+        }
+
+        &__tabs {
+            display: flex;
+            flex: row wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+
+            &__tab {
+                padding: 1rem;
+                margin: .25rem;
+            }
+
+            &__tab:not(.active) {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $hover-background;
+                    border-radius: 15rem;
+                }
+            }
+
+            &__tab.active {
+                color: $active-font-color;
+                font-weight: 600;
+                cursor: default;
+            }
+        }
+    }
+
+    &__body {
+        flex: 1;
+        max-height: 80vh;
+        background-color: $content-background;
+    }
+}
