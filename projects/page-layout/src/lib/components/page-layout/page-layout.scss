@@ -1,0 +1,39 @@
+
+.page-layout-container {
+    width: 100%;
+    height: 100%;
+
+    font-family: 'myFont', arial, kursiv;
+
+    display: flex;
+    flex-direction: row;
+
+    &__image {
+        width: 40vw;
+    }
+
+    &__content {
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        gap: .5rem
+
+        &__header {
+            font-size: 13;
+            font-weight: 700;
+        }
+
+        &__body {
+            font-size: 11;
+            font-weight: 500;
+        }
+    }
+}
+
+@font-face {
+  font-family: 'myFont';
+  src: url('../../assets/font/Inter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,11 @@
+<div class="page-layout-container">
+    @if (imageInfo()){
+        <div class="page-layout-container__image">
+            <img [src]="imageInfo()! | getImageSource" [alt]="imageInfo()!.altText">
+        </div>
+    }
+    <div class="page-layout-container__content">
+        <ng-content class="page-layout-container__content__header" select="[page-header]"></ng-content>
+        <ng-content class="page-layout-container__content__body"></ng-content>
+    </div>
+</div>
