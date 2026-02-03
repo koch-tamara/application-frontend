@@ -1,11 +1,9 @@
 import { Component, Input, signal } from '@angular/core';
-import { NgIf } from "../../../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { ImageInformation } from '../../data';
-import { GetImageSourcePipe } from '../../pipes/get-image-source.pipe';
 
 @Component({
   selector: 'lib-page-layout',
-  imports: [GetImageSourcePipe],
+  imports: [],
   templateUrl: "./page-layout.html",
   styleUrl: "./page-layout.scss",
 })

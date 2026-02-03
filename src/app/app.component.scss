@@ -1,6 +1,6 @@
 
 $content-background: rgba(216, 117, 77, 0.1);
-$hover-background: rgba(180, 180, 180, 0.25);
+$hover-background: rgba(216, 117, 77, 0.1);
 $default-font-color: rgb(40, 40, 40);
 $active-font-color: rgb(216, 117, 77);
 
@@ -20,7 +20,7 @@ $active-font-color: rgb(216, 117, 77);
 
         &__tabs {
             display: flex;
-            flex: row wrap;
+            // flex-wrap: wrap;
             align-items: center;
             justify-content: flex-end;
             gap: 1rem;
@@ -28,6 +28,7 @@ $active-font-color: rgb(216, 117, 77);
             &__tab {
                 padding: 1rem;
                 margin: .25rem;
+                white-space: nowrap;
             }
 
             &__tab:not(.active) {

@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
-import { PageLayout } from "../../projects/page-layout/src/public-api";
+import { ImageInformation, PageLayout } from "../../projects/page-layout/src/public-api";
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
 
@@ -26,7 +26,13 @@ export class Tab {
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, PageLayout, RouterLinkWithHref, RouterLinkActive],
+  imports: [
+    CommonModule, 
+    RouterOutlet, 
+    PageLayout, 
+    RouterLinkWithHref, 
+    RouterLinkActive,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -39,4 +45,9 @@ export class AppComponent {
     route.path !== '**' &&
     route.path !== '')
   .map(route => new Tab(route.path!))
+
+  signatureImage: ImageInformation = {
+    altText: 'Signature',
+    path: 'signature.svg',
+  }
 }

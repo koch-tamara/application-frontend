@@ -1,7 +1,7 @@
 <div class="page-layout-container">
     @if (imageInfo()){
         <div class="page-layout-container__image">
-            <img [src]="imageInfo()! | getImageSource" [alt]="imageInfo()!.altText">
+            <img [src]="imageInfo()!.path" [alt]="imageInfo()!.altText">
         </div>
     }
     <div class="page-layout-container__content">
