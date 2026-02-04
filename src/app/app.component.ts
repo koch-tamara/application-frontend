@@ -1,8 +1,8 @@
-import { Component, ElementRef, inject, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router, RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
-import { ImageInformation, PageLayout } from "../../projects/page-layout/src/public-api";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
+import { ImageInformation, PageLayout } from 'page-layout';
 
 export class Tab {
   id: string;
@@ -14,13 +14,13 @@ export class Tab {
   }
 
   private pathLabelMapping: Map<string, string> = new Map([
-    ['introduction', 'Vorstellung'],
-    ['experience', 'Erfahrung'],
-    ['education', 'Ausbildung'],
-    ['skills', 'Fähigkeiten'],
-    ['documents', 'Dokumente'],
-    ['about-me', 'Über mich'],
-    ['contact', 'Kontaktdaten']
+    ['introduction', $localize`:@@tabs.introduction:Vorstellung`],
+    ['experience', $localize`:@@tabs.experience:Erfahrung`],
+    ['education', $localize`:@@tabs.education:Ausbildung`],
+    ['skills', $localize`:@@tabs.skills:Fähigkeiten`],
+    ['documents', $localize`:@@tabs.documents:Dokumente`],
+    ['about-me', $localize`:@@tabs.about-me:Über mich`],
+    ['contact', $localize`:@@tabs.contact:Kontakt`]
   ]);
 }
 

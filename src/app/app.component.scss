@@ -20,14 +20,12 @@ $active-font-color: rgb(216, 117, 77);
 
         &__tabs {
             display: flex;
-            // flex-wrap: wrap;
             align-items: center;
             justify-content: flex-end;
-            gap: 1rem;
+            gap: .5rem;
 
             &__tab {
                 padding: 1rem;
-                margin: .25rem;
                 white-space: nowrap;
             }
 

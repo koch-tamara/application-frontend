@@ -3,32 +3,40 @@
     width: 100%;
     height: 100%;
 
-    font-family: 'myFont', arial, kursiv;
+    font-family: 'myFont', arial, sans-serif;
 
     display: flex;
     flex-direction: row;
 
     &__image {
-        width: 40vw;
+        width: 35vw;
         display: flex;
         justify-content: center;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     &__content {
         flex: 1;
-
         display: flex;
         flex-direction: column;
-        gap: .5rem
+        gap: .5rem;
 
         &__header {
-            font-size: 13;
-            font-weight: 700;
+            font-size: 13pt;
+            font-weight: bold;
         }
 
         &__body {
-            font-size: 11;
-            font-weight: 500;
+            font-size: 11pt;
+        }
+
+        &--padding {
+            padding: 1rem;
         }
     }
 }

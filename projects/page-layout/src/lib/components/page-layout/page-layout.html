@@ -1,11 +1,17 @@
 <div class="page-layout-container">
-    @if (imageInfo()){
+    @if (imageInformation){
         <div class="page-layout-container__image">
-            <img [src]="imageInfo()!.path" [alt]="imageInfo()!.altText">
+            <img [src]="imageInformation!.path" [alt]="imageInformation!.altText">
         </div>
     }
-    <div class="page-layout-container__content">
-        <ng-content class="page-layout-container__content__header" select="[page-header]"></ng-content>
-        <ng-content class="page-layout-container__content__body"></ng-content>
+    <div class="page-layout-container__content"
+        [ngClass]="{ 'page-layout-container__content--padding': addPadding }">
+        <div class="page-layout-container__content__header">
+            <ng-content select="[page-header]"></ng-content>
+        </div>
+
+        <div class="page-layout-container__content__body">
+            <ng-content></ng-content>
+        </div>
     </div>
 </div>
