@@ -17,6 +17,9 @@
     "paths": {
       "page-layout": [
         "./dist/page-layout"
+      ],
+      "timeline": [
+        "./dist/timeline"
       ]
     },
     "importHelpers": true,
@@ -35,6 +38,12 @@
     },
     {
       "path": "./projects/page-layout/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/timeline/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/timeline/tsconfig.spec.json"
     }
   ]
 }

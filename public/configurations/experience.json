@@ -1,0 +1,85 @@
+[
+  {
+    "company": {
+      "name": "Grabuschnigg",
+      "address": "Walgaustraße 16, 6833 Klaus"
+    },
+    "employedAs": "Leasing",
+    "from": "2010-09-01T00:00:00+02:00",
+    "to": "2011-05-31T23:59:59+02:00"
+  },
+  {
+    "company": {
+      "name": "SF Filterdienst GmbH",
+      "address": "6833 Weiler"
+    },
+    "employedAs": "Sachbearbeiterin",
+    "from": "2011-06-01T00:00:00+02:00",
+    "to": "2011-11-30T23:59:59+02:00"
+  },
+  {
+    "company": {
+      "name": "Grabuschnigg",
+      "address": "Walgaustraße 16, 6833 Klaus"
+    },
+    "employedAs": "Graveurin",
+    "from": "2011-12-01T00:00:00+02:00",
+    "to": "2016-04-30T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Escatec Switzerland AG",
+      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+    },
+    "employedAs": "Produktionsangestellte",
+    "downloads": ["employee-reference/escatec"],
+    "from": "2016-05-01T00:00:00+02:00",
+    "to": "2019-07-31T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Escatec Switzerland AG",
+      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+    },
+    "employedAs": "Ferialjob",
+    "from": "2020-07-01T00:00:00+02:00",
+    "to": "2020-09-31T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Leica Geosystems AG",
+      "address": "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+    },
+    "employedAs": "Ferialjob - Lager",
+    "from": "2021-07-01T00:00:00+02:00",
+    "to": "2021-09-31T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Escatec Switzerland AG",
+      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+    },
+    "employedAs": "Ferialjob",
+    "from": "2022-07-01T00:00:00+02:00",
+    "to": "2022-08-15T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Leica Geosystems AG",
+      "address": "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+    },
+    "employedAs": "Ferialjob - Lager",
+    "from": "2022-08-16T00:00:00+02:00",
+    "to": "2022-09-31T00:00:00+02:00"
+  },
+  {
+    "company": {
+      "name": "Servus Intralogistics GmbH",
+      "address": "Dr. Walter Zumtobel Straße 2, 6850 Dornbirn"
+    },
+    "employedAs": "Software Engineer",
+    "downloads": ["trainee-certificate", "employee-reference/servus"],
+    "from": "2022-08-16T00:00:00+02:00",
+    "to": "2022-09-31T00:00:00+02:00"
+  }
+]

@@ -6,38 +6,39 @@ import { SkillsComponent } from './content/skills/skills.component';
 import { DocumentsComponent } from './content/documents/documents.component';
 import { AboutMeComponent } from './content/about-me/about-me.component';
 import { ContactComponent } from './content/contact/contact.component';
+import { ETabId } from './data/tabs';
 
 export const routes: Routes = [
     {
-        path: 'introduction',
+        path: ETabId.introduction,
         component: IntroductionComponent,
     },
     {
-        path: 'experience',
+        path: ETabId.experience,
         component: ExperienceComponent
     },
     {
-        path: 'education',
+        path: ETabId.education,
         component: EducationComponent
     },
     {
-        path: 'skills',
+        path: ETabId.skills,
         component: SkillsComponent
     },
     {
-        path: 'documents',
+        path: ETabId.documents,
         component: DocumentsComponent
     },
     {
-        path: 'about-me',
+        path: ETabId.aboutMe,
         component: AboutMeComponent
     },
     {
-        path: 'contact',
+        path: ETabId.contact,
         component: ContactComponent
     },
     {
         path: '**',
-        redirectTo: 'introduction',
+        redirectTo: ETabId.introduction,
     },
 ];

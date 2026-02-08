@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ImageInformation, PageLayout } from 'page-layout';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-education',
@@ -13,5 +14,5 @@ export class EducationComponent {
     altText: 'Placeholder',
     path: 'placeholder_horizontal.png',
   }
-
+  dataService = inject(DataService);
 }

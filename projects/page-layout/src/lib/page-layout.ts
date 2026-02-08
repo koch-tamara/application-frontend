@@ -1,5 +1,5 @@
 import { Component, Input, signal } from '@angular/core';
-import { ImageInformation } from '../../data';
+import { ImageInformation } from './data';
 import { NgClass } from '@angular/common';
 
 @Component({
