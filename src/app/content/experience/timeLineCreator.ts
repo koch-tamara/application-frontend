@@ -5,6 +5,9 @@ const biggestYDistanceToImageCenter = 100;
 const smallestYDistanceToImageCenter = 40;
 const sideDistanceToNearestEntry = 50;
 
+const strokeDefaultColor = '#808080';
+const strokeHighlightColor = '#D8754D';
+
 class EntryInformation {
     content: TimeLineEntry;
     position: PositionData;
@@ -14,6 +17,13 @@ class EntryInformation {
         this.position = new PositionData(previousPosition);
         this.id = id;
     }
+
+    public GetMostRightCoordinate(): Coordinate {
+        const position = !!this.position.emptyStepAfterEntry
+            ? this.position.emptyStepAfterEntry
+            : this.position;
+        return new Coordinate(position.coordinate.x + position.length, position.coordinate.y);
+    } 
 }
 
 class PositionData {
@@ -26,7 +36,7 @@ class PositionData {
     };
 
     private entryLength = new Range(50, 70);
-    private gapLength = new Range(5, 20);
+    private gapLength = new Range(10, 25);
     private yTopRange = new Range(-smallestYDistanceToImageCenter, -biggestYDistanceToImageCenter);
     private yBottomRange = new Range(this.yTopRange.max*(-1), this.yTopRange.min*(-1));
 
@@ -80,9 +90,10 @@ enum EPosition {
     bottom
 }
 
-enum ESide {
-    left,
-    right
+enum DrawDirection {
+    toTop,
+    toBottom,
+    toRight
 }
 
 class Coordinate {
@@ -130,7 +141,7 @@ export class TimeLineCreator {
         this.entries = this.updateYValueToHaveFullImageSize(timeEntries);
     }
 
-    public drawTimeLine(){
+    public drawTimeLine(name?: string){
         if (!this.entries.length)
             return;
 
@@ -138,27 +149,16 @@ export class TimeLineCreator {
         svg.setAttribute('height', '100%');
         svg.setAttribute('viewBox', this.calculateBoundingBox());
 
+        if (name) {
+            svg.setAttribute('id', name);
+        }
+
         for (let i = 0; i < this.entries.length; i++){
-            if (i === 0){
-                var side = this.drawSideStroke(ESide.left);
-                this.imageContainer.nativeElement.appendChild(side);
-            }
-
-            const entry = this.entries[i];
-            this.drawEntry(entry, entry);
-
-            if (entry.position.emptyStepAfterEntry){
-                var emptyStep = this.drawEmptyStep(this.entries[i]);
-                this.imageContainer.nativeElement.appendChild(emptyStep);
-            }
-            if (i === this.entries.length && this.getMostRightEntry().content.to){
-                var side = this.drawSideStroke(ESide.right);
-                this.imageContainer.nativeElement.appendChild(side);
-            }
+            const isLast = i + 1 === this.entries.length;
+            this.drawTimeLineEntry(i, isLast, svg)
         }
         this.imageContainer.nativeElement.appendChild(svg);
     }
-
 
     private calculateBoundingBox(): string {
         const topLeftpoint = {
@@ -171,6 +171,95 @@ export class TimeLineCreator {
         if (lastEntryHasEnded)
             xLength += sideDistanceToNearestEntry;
         return `${topLeftpoint.x} ${topLeftpoint.y} ${xLength} 320`;
+    }
+
+    private drawTimeLineEntry(i: number, isLast: boolean, svg: Element): void {
+        if (i === 0){
+            this.drawSideStroke(svg);
+        }
+
+        this.drawEntry(svg, this.entries[i], i > 0 ? this.entries[i - 1].GetMostRightCoordinate() : new Coordinate(sideDistanceToNearestEntry, 0), isLast);
+
+        if (i !== 0 && isLast && this.getMostRightEntry().content.to){
+            this.drawSideStroke(svg, this.entries[i-1]);
+        }
+    }
+
+    private drawEntry(svg: Element, entry: EntryInformation, startCoordinates: Coordinate, isLast: boolean): void {
+        var entryContainer = document.createElementNS(this.svgNS, 'g');
+        entryContainer.setAttribute('id', entry.content.where.name);
+
+        var drawingDirection = entry.position.position === EPosition.top
+            ? DrawDirection.toTop
+            : DrawDirection.toBottom;
+        let length = Math.abs(startCoordinates.y - entry.position.coordinate.y);
+        var toHorizontalLine = this.drawLine(startCoordinates, drawingDirection, length);
+        entryContainer.appendChild(toHorizontalLine);
+
+        startCoordinates = new Coordinate(startCoordinates.x, drawingDirection === DrawDirection.toTop
+            ? startCoordinates.y - length
+            : startCoordinates.y + length
+        );
+        var highlightLine = this.drawLine(startCoordinates, DrawDirection.toRight, entry.position.length);
+        entryContainer.appendChild(highlightLine);
+
+        if (isLast && !entry.content.to){
+            svg.appendChild(entryContainer);
+            return;
+        }
+
+        startCoordinates = new Coordinate(startCoordinates.x + entry.position.length, startCoordinates.y);
+        length = !!entry.position.emptyStepAfterEntry
+            ? Math.abs(startCoordinates.y - entry.position.emptyStepAfterEntry.coordinate.y)
+            : Math.abs(startCoordinates.y);
+        drawingDirection = drawingDirection === DrawDirection.toBottom ? DrawDirection.toTop : DrawDirection.toBottom;
+        var afterHighlightLine = this.drawLine(startCoordinates, drawingDirection, length);
+        entryContainer.appendChild(afterHighlightLine);
+
+        if (entry.position.emptyStepAfterEntry){
+            var position = entry.position.emptyStepAfterEntry;
+            var emptyStepLine = this.drawLine(position.coordinate, DrawDirection.toRight, position.length, true);
+            entryContainer.appendChild(emptyStepLine);
+        }
+        svg.appendChild(entryContainer);
+    }
+
+    private drawLine(start: Coordinate, direction: DrawDirection, length: number, isEmptyStep?: boolean): Element {
+        
+        const line = document.createElementNS(this.svgNS, 'path');
+        line.setAttribute('d', this.createPath(start, length, direction));
+        line.setAttribute('stroke', direction === DrawDirection.toRight && !isEmptyStep ? strokeHighlightColor : strokeDefaultColor);
+        line.setAttribute('stroke-width', '2');
+        line.setAttribute('fill', 'none');
+        return line;
+    }
+
+    private drawSideStroke(svg: Element, leftEntry?: EntryInformation): void {
+        const leftCornerCoordinates = !leftEntry
+            ? new Coordinate(0, 0)
+            : leftEntry.GetMostRightCoordinate();
+        const length: number = !leftEntry
+            ? sideDistanceToNearestEntry
+            : leftEntry.position.length;
+        
+        const sideStroke = document.createElementNS(this.svgNS, 'path');
+        sideStroke.setAttribute('d', this.createPath(leftCornerCoordinates, length));
+        sideStroke.setAttribute('stroke', strokeDefaultColor);
+        sideStroke.setAttribute('stroke-width', '2');
+        sideStroke.setAttribute('fill', 'none');
+        svg.appendChild(sideStroke);
+    }
+
+    private createPath(coordinates: Coordinate, length: number, goTo: DrawDirection = DrawDirection.toRight): string {
+        
+        switch (goTo){
+            case DrawDirection.toTop:
+                return `M ${coordinates.x} ${coordinates.y} L ${coordinates.x} ${coordinates.y - length}`;
+            case DrawDirection.toBottom:
+                return `M ${coordinates.x} ${coordinates.y} L ${coordinates.x} ${coordinates.y + length}`;
+            default:
+               return `M ${coordinates.x} ${coordinates.y} L ${coordinates.x + length} ${coordinates.y}`; 
+        }
     }
 
     private getMostLeftEntry(): EntryInformation {
