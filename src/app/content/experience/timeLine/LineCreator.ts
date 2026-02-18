@@ -16,16 +16,16 @@ export class LineCreator {
         if (i === 0)
             this.drawSideLine(svg, entries, false);
 
-        this.drawEntryLine(svg, entries[i], i > 0 ? entries[i - 1].GetMostRightCoordinate() : new Coordinates(SideDistanceToNearestEntry, 0), isLast);
+        this.drawEntryLine(svg, entries[i], i > 0 ? entries[i - 1].GetMostRightCoordinate() : new Coordinates(SideDistanceToNearestEntry, 0), isLast, i);
 
         if (i !== 0 && isLast && this.helper.getMostRightEntry(entries).content.to)
             this.drawSideLine(svg, entries, true);
     }
 
-    private drawEntryLine(svg: Element, entry: TimeLineEntry, startCoordinates: Coordinates, isLast: boolean): void {
+    private drawEntryLine(svg: Element, entry: TimeLineEntry, startCoordinates: Coordinates, isLast: boolean, i: number): void {
         const { coordinates: coordinate } = entry.data;
 
-        var groupElement = this.helper.createLineContainer(entry);
+        var groupElement = this.helper.createGroupElement(`entry-${i+1}`);
         this.addLeftVerticalLine(entry, startCoordinates, groupElement);
         this.addHorizontalLine(entry, isLast, coordinate, groupElement);
 

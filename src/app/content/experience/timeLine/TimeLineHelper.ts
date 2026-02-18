@@ -1,4 +1,5 @@
 import { BezierData } from "./classes/BezierData";
+import { Coordinates } from "./classes/Coordinates";
 import { TimeLineEntry } from "./classes/TimeLineEntry";
 import { EBezierDirection } from "./enums/EBezierDirection";
 import { EImagePosition } from "./enums/EImagePosition";
@@ -7,9 +8,13 @@ import { BiggestYDistanceToImageCenter, imageHeight, SideDistanceToNearestEntry 
 
 export class TimeLineHelper {
     private svgNS = 'http://www.w3.org/2000/svg';
+    private XHTML_NS = "http://www.w3.org/1999/xhtml";
 
-    createSvgElement(entries: TimeLineEntry[], name?: string) {
+    createSvgElement(entries?: TimeLineEntry[], name?: string) {
         const svg = document.createElementNS(this.svgNS, 'svg');
+        if (!entries)
+            return svg;
+        
         svg.setAttribute('height', '100%');
         svg.setAttribute('viewBox', this.calculateBoundingBox(entries));
 
@@ -19,11 +24,32 @@ export class TimeLineHelper {
         return svg;
     }
 
-    createLineContainer(entry: TimeLineEntry) {
-        var groupElement = document.createElementNS(this.svgNS, 'g');
-        groupElement.setAttribute('id', entry.content.where.name);
+    createGroupElement(id?: string) {
+        let groupElement = document.createElementNS(this.svgNS, 'g');
+
+        if (id) {
+            groupElement.setAttribute('id', id);
+        }
         return groupElement;
     }
+
+    createForeignObject(coordinates: Coordinates, width: number, height: number, id?: string){
+        let foreignObject = document.createElementNS(this.svgNS, 'foreignObject');
+        foreignObject.setAttribute('x', `${coordinates.x}`);
+        foreignObject.setAttribute('y', `${coordinates.y}`);
+        foreignObject.setAttribute('width', `${width}`);
+        foreignObject.setAttribute('height', `${height}`);
+
+        if (id)
+            foreignObject.setAttribute('id', id);
+
+        return foreignObject;
+    }
+
+    // createHtmlElementNS(elementType: string): HTMLElement {
+    //     let element = document.createElementNS(this.XHTML_NS, elementType);
+    //     return element;
+    // }
 
     getMostLeftEntry(entries: TimeLineEntry[]): TimeLineEntry {
         return entries.reduce((min, current) =>
@@ -37,7 +63,7 @@ export class TimeLineHelper {
             entries[0])
     }
 
-    calculateContentPositions(content: Content[]):TimeLineEntry[] {
+    calculateContentPositions(content: Content[]): TimeLineEntry[] {
         const timeEntries: TimeLineEntry[] = [];
         for (let index = 0; index < content.length; index++) {
             const isLastEntry = index + 1 === content.length;

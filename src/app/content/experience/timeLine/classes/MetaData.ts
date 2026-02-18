@@ -1,6 +1,6 @@
 import { EImagePosition } from "../enums/EImagePosition";
 import { Position } from "./Position";
-import { BezierRadius, BiggestYDistanceToImageCenter, SideDistanceToNearestEntry, SmallestYDistanceToImageCenter } from "../TimeLineDefaults";
+import { BezierRadius, BiggestYDistanceToImageCenter, EntryMaxLength, EntryMinLength, SideDistanceToNearestEntry, SmallestYDistanceToImageCenter } from "../TimeLineDefaults";
 import { Coordinates } from "./Coordinates";
 import { RandomNumberInRange } from "./RandomNumberInRange";
 
@@ -8,9 +8,11 @@ export class MetaData extends Position {
     position: EImagePosition;
     emptyStepAfterEntry?: Position;
 
-    constructor(isLastEntry: boolean, previousPosition?: MetaData) {
+    constructor(isLastEntry: boolean, to?: Date, previousPosition?: MetaData) {
 
-        const entryLength = new RandomNumberInRange(50, 70).randomIntInRange;
+        const entryLength = isLastEntry && !to
+            ? EntryMaxLength + EntryMinLength
+            : new RandomNumberInRange(EntryMinLength, EntryMaxLength).randomIntInRange;
         const yTopRange = new RandomNumberInRange(
             -SmallestYDistanceToImageCenter,
             -BiggestYDistanceToImageCenter

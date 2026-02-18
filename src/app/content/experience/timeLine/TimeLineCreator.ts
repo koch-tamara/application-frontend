@@ -18,17 +18,26 @@ export class TimeLineCreator {
         this.entries = this.helper.calculateContentPositions(timeLineEntries);
     }
 
-    public drawImage(name?: string) {
+    drawImage(name?: string) {
         if (!this.entries.length)
             return;
 
         const svg = this.helper.createSvgElement(this.entries, name);
-        
+        this.drawLines(svg);
+        this.drawContent(svg);
+    }
+
+    private drawLines(svg: Element) {
         for (let i = 0; i < this.entries.length; i++) {
             const isLast = i + 1 === this.entries.length;
             this.lineCreator.drawLine(this.entries, i, isLast, svg);
-            this.contentCreator.drawContent(this.entries, i, isLast, svg);
         }
         this.imageContainer.nativeElement.appendChild(svg);
+    }
+
+    private drawContent(svg: Element) {
+        for (let i = 0; i < this.entries.length; i++) {
+            this.contentCreator.drawContent(this.entries, i, svg);
+        }
     }
 }

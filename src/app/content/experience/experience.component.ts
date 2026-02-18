@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { ImageInformation, PageLayout } from 'page-layout';
-import { TimeLineCreator } from './timeLine/timeLineCreator';
+import { TimeLineCreator } from './timeLine/TimeLineCreator';
 
 @Component({
   imports: [PageLayout, NgTemplateOutlet],
@@ -28,7 +28,7 @@ const timeLine = [
   {
     where: {
       name: "Grabuschnigg",
-      address: "Walgaustraße 16, 6833 Klaus"
+      address: "6833 Klaus"
     },
     label: "Leasing",
     from: new Date("2010-09-01T00:00:00+02:00"),
@@ -46,7 +46,7 @@ const timeLine = [
   {
     where: {
       name: "Grabuschnigg",
-      address: "Walgaustraße 16, 6833 Klaus"
+      address: "6833 Klaus"
     },
     label: "Graveurin",
     from: new Date("2011-12-01T00:00:00+02:00"),
@@ -55,7 +55,7 @@ const timeLine = [
   {
     where: {
       name: "Escatec Switzerland AG",
-      address: "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      address: "9435 Heerbrugg, CH"
     },
     label: "Produktionsangestellte",
     downloads: ["employee-reference/escatec"],
@@ -65,7 +65,7 @@ const timeLine = [
   {
     where: {
       name: "Escatec Switzerland AG",
-      address: "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      address: "9435 Heerbrugg, CH"
     },
     label: "Ferialjob",
     from: new Date("2020-07-01T00:00:00+02:00"),
@@ -74,7 +74,7 @@ const timeLine = [
   {
     where: {
       name: "Leica Geosystems AG",
-      address: "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+      address: "9435 Heerbrugg, CH"
     },
     label: "Ferialjob - Lager",
     from: new Date("2021-07-01T00:00:00+02:00"),
@@ -83,16 +83,16 @@ const timeLine = [
   {
     where: {
       "name": "Escatec Switzerland AG",
-      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, CH"
     },
-    label: "Ferialjob",
+    label: "Ferialjob - Production",
     from: new Date("2022-07-01T00:00:00+02:00"),
     to: new Date("2022-08-15T00:00:00+02:00")
   },
   {
     where: {
       name: "Leica Geosystems AG",
-      address: "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+      address: "9435 Heerbrugg, CH"
     },
     label: "Ferialjob - Lager",
     from: new Date("2022-08-16T00:00:00+02:00"),
@@ -102,11 +102,10 @@ const timeLine = [
   {
     where: {
       name: "Servus Intralogistics GmbH",
-      address: "Dr. Walter Zumtobel Straße 2, 6850 Dornbirn"
+      address: "6850 Dornbirn"
     },
     label: "Software Engineer",
     downloads: ["trainee-certificate", "employee-reference/servus"],
-    from: new Date("2022-10-03T00:00:00+02:00"),
-    to: new Date("2025-10-03T00:00:00+02:00")
+    from: new Date("2022-10-03T00:00:00+02:00")
   }
 ];

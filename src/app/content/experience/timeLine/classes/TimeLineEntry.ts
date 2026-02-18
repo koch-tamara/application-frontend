@@ -9,7 +9,7 @@ export class TimeLineEntry {
 
     constructor(content: Content, id: number, isLastEntry: boolean, previousData?: MetaData) {
         this.content = content;
-        this.data = new MetaData(isLastEntry, previousData);
+        this.data = new MetaData(isLastEntry, content.to, previousData);
         this.id = id;
     }
 
