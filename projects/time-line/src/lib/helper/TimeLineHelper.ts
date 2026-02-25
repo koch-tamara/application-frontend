@@ -1,10 +1,11 @@
-import { BezierData } from "./classes/BezierData";
-import { Coordinates } from "./classes/Coordinates";
-import { TimeLineEntry } from "./classes/TimeLineEntry";
-import { EBezierDirection } from "./enums/EBezierDirection";
-import { EImagePosition } from "./enums/EImagePosition";
-import { Content } from "./interfaces/Content";
-import { BiggestYDistanceToImageCenter, imageHeight, SideDistanceToNearestEntry } from "./TimeLineDefaults";
+import { BezierData } from "../classes/BezierData";
+import { Content } from "../classes/Content";
+import { Coordinates } from "../classes/Coordinates";
+import { TimeLineEntry } from "../classes/TimeLineEntry";
+import { EBezierDirection } from "../enums/EBezierDirection";
+import { EHtmlTag } from "../enums/EHtmlElement";
+import { EImagePosition } from "../enums/EImagePosition";
+import { BiggestYDistanceToImageCenter, ImageHeight, SideDistanceToNearestEntry } from "./TimeLineDefaults";
 
 export class TimeLineHelper {
     private svgNS = 'http://www.w3.org/2000/svg';
@@ -14,7 +15,7 @@ export class TimeLineHelper {
         const svg = document.createElementNS(this.svgNS, 'svg');
         if (!entries)
             return svg;
-        
+
         svg.setAttribute('height', '100%');
         svg.setAttribute('viewBox', this.calculateBoundingBox(entries));
 
@@ -24,7 +25,7 @@ export class TimeLineHelper {
         return svg;
     }
 
-    createGroupElement(id?: string) {
+    createSvgGroupElement(id?: string) {
         let groupElement = document.createElementNS(this.svgNS, 'g');
 
         if (id) {
@@ -33,7 +34,7 @@ export class TimeLineHelper {
         return groupElement;
     }
 
-    createForeignObject(coordinates: Coordinates, width: number, height: number, id?: string){
+    createSvgForeignObject(coordinates: Coordinates, width: number, height: number, id?: string) {
         let foreignObject = document.createElementNS(this.svgNS, 'foreignObject');
         foreignObject.setAttribute('x', `${coordinates.x}`);
         foreignObject.setAttribute('y', `${coordinates.y}`);
@@ -46,10 +47,16 @@ export class TimeLineHelper {
         return foreignObject;
     }
 
-    // createHtmlElementNS(elementType: string): HTMLElement {
-    //     let element = document.createElementNS(this.XHTML_NS, elementType);
-    //     return element;
-    // }
+    createSvgPathElement(path: string) {
+        var svgPath = document.createElementNS(this.svgNS, 'path');
+        svgPath.setAttribute('d', path);
+        return svgPath;
+    }
+
+    createHtmlElement(tag: EHtmlTag): HTMLElement {
+        const htmlElement = document.createElementNS(this.XHTML_NS, tag);
+        return htmlElement as HTMLElement;
+    }
 
     getMostLeftEntry(entries: TimeLineEntry[]): TimeLineEntry {
         return entries.reduce((min, current) =>
@@ -90,7 +97,7 @@ export class TimeLineHelper {
 
     getBezierEntryInformation(entry: TimeLineEntry, isLast: boolean, hasFinished: boolean): BezierData {
 
-        if (entry.data.position === EImagePosition.bottom){
+        if (entry.data.position === EImagePosition.bottom) {
             return new BezierData(EBezierDirection.upwards, isLast && !hasFinished ? undefined : EBezierDirection.upwards);
         }
 
@@ -105,14 +112,14 @@ export class TimeLineHelper {
     }
 
     private calculateBoundingBox(entries: TimeLineEntry[]): string {
-    
+
         const mostRightEntry = this.getMostRightEntry(entries);
         let xLength = mostRightEntry.data.coordinates.x + mostRightEntry.data.length;
-        
+
         if (mostRightEntry.content.to)
             xLength += SideDistanceToNearestEntry;
 
-        return `0 ${- imageHeight/2} ${xLength} ${imageHeight}`;
+        return `0 ${- ImageHeight / 2} ${xLength} ${ImageHeight}`;
     }
 
     private updateCoordinatesToHaveFullImageSize(entries: TimeLineEntry[]): TimeLineEntry[] {

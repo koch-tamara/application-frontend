@@ -1,10 +1,10 @@
-import { BezierData } from "./classes/BezierData";
-import { Coordinates } from "./classes/Coordinates";
-import { Position } from "./classes/Position";
-import { TimeLineEntry } from "./classes/TimeLineEntry";
-import { EBezierDirection } from "./enums/EBezierDirection";
-import { ELineDrawingDirection } from "./enums/EDrawingDirection";
-import { EImagePosition } from "./enums/EImagePosition";
+import { BezierData } from "../classes/BezierData";
+import { Coordinates } from "../classes/Coordinates";
+import { Position } from "../classes/Position";
+import { TimeLineEntry } from "../classes/TimeLineEntry";
+import { EBezierDirection } from "../enums/EBezierDirection";
+import { ELineDrawingDirection } from "../enums/EDrawingDirection";
+import { EImagePosition } from "../enums/EImagePosition";
 import { BezierRadius, SideDistanceToNearestEntry, StrokeDefaultColor, StrokeHighlightColor } from "./TimeLineDefaults";
 import { TimeLineHelper } from "./TimeLineHelper";
 
@@ -25,7 +25,7 @@ export class LineCreator {
     private drawEntryLine(svg: Element, entry: TimeLineEntry, startCoordinates: Coordinates, isLast: boolean, i: number): void {
         const { coordinates: coordinate } = entry.data;
 
-        var groupElement = this.helper.createGroupElement(`entry-${i+1}`);
+        var groupElement = this.helper.createSvgGroupElement(`entry-${i+1}`);
         this.addLeftVerticalLine(entry, startCoordinates, groupElement);
         this.addHorizontalLine(entry, isLast, coordinate, groupElement);
 

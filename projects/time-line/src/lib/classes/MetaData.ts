@@ -1,8 +1,8 @@
 import { EImagePosition } from "../enums/EImagePosition";
 import { Position } from "./Position";
-import { BezierRadius, BiggestYDistanceToImageCenter, EntryMaxLength, EntryMinLength, SideDistanceToNearestEntry, SmallestYDistanceToImageCenter } from "../TimeLineDefaults";
 import { Coordinates } from "./Coordinates";
 import { RandomNumberInRange } from "./RandomNumberInRange";
+import { EntryMaxLength, EntryMinLength, SmallestYDistanceToImageCenter, BiggestYDistanceToImageCenter, BezierRadius, SideDistanceToNearestEntry } from "../helper/TimeLineDefaults";
 
 export class MetaData extends Position {
     position: EImagePosition;

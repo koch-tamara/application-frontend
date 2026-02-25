@@ -2,7 +2,7 @@
   {
     "company": {
       "name": "Grabuschnigg",
-      "address": "Walgaustraße 16, 6833 Klaus"
+      "address": "6833 Klaus"
     },
     "employedAs": "Leasing",
     "from": "2010-09-01T00:00:00+02:00",
@@ -20,7 +20,7 @@
   {
     "company": {
       "name": "Grabuschnigg",
-      "address": "Walgaustraße 16, 6833 Klaus"
+      "address": "6833 Klaus"
     },
     "employedAs": "Graveurin",
     "from": "2011-12-01T00:00:00+02:00",
@@ -29,7 +29,7 @@
   {
     "company": {
       "name": "Escatec Switzerland AG",
-      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Produktionsangestellte",
     "downloads": ["employee-reference/escatec"],
@@ -39,7 +39,7 @@
   {
     "company": {
       "name": "Escatec Switzerland AG",
-      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Ferialjob",
     "from": "2020-07-01T00:00:00+02:00",
@@ -48,7 +48,7 @@
   {
     "company": {
       "name": "Leica Geosystems AG",
-      "address": "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Ferialjob - Lager",
     "from": "2021-07-01T00:00:00+02:00",
@@ -57,7 +57,7 @@
   {
     "company": {
       "name": "Escatec Switzerland AG",
-      "address": "Heinrich-Wild-Strasse 203, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Ferialjob",
     "from": "2022-07-01T00:00:00+02:00",
@@ -66,7 +66,7 @@
   {
     "company": {
       "name": "Leica Geosystems AG",
-      "address": "Heinrich-Wild-Strasse 201, 9435 Heerbrugg, Schweiz"
+      "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Ferialjob - Lager",
     "from": "2022-08-16T00:00:00+02:00",
@@ -75,10 +75,10 @@
   {
     "company": {
       "name": "Servus Intralogistics GmbH",
-      "address": "Dr. Walter Zumtobel Straße 2, 6850 Dornbirn"
+      "address": "6850 Dornbirn"
     },
     "employedAs": "Software Engineer",
-    "downloads": ["trainee-certificate", "employee-reference/servus"],
+    "downloads": ["employee-reference/servus-trainee-certificate", "employee-reference/servus"],
     "from": "2022-10-03T00:00:00+02:00"
   }
 ]

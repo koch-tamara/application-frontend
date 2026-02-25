@@ -1,21 +1,25 @@
 import { ElementRef } from "@angular/core";
-import { TimeLineEntry } from "./classes/TimeLineEntry";
-import { Content } from "./interfaces/Content";
 import { LineCreator } from "./LineCreator";
 import { TimeLineHelper } from "./TimeLineHelper";
 import { ContentCreator } from "./ContentCreator";
+import { FileDownloadService } from "../services/file-download.service";
+import { Content } from "../classes/Content";
+import { TimeLineEntry } from "../classes/TimeLineEntry";
 
 
 export class TimeLineCreator {
     private imageContainer: ElementRef<HTMLDivElement>;
     private entries: TimeLineEntry[];
     private helper = new TimeLineHelper();
+    private readonly fileDownloadService;
     private lineCreator = new LineCreator();
-    private contentCreator = new ContentCreator();
+    private contentCreator;
 
-    constructor(imageContainer: ElementRef<HTMLDivElement>, timeLineEntries: Content[]) {
+    constructor(imageContainer: ElementRef<HTMLDivElement>, timeLineEntries: Content[], fileDownloadService: FileDownloadService) {
         this.imageContainer = imageContainer;
         this.entries = this.helper.calculateContentPositions(timeLineEntries);
+        this.fileDownloadService = fileDownloadService;
+        this.contentCreator = new ContentCreator(this.fileDownloadService);
     }
 
     drawImage(name?: string) {

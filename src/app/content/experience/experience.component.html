@@ -1,7 +1,3 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <ng-container [ngTemplateOutlet]="timeLine"></ng-container>
+    <lib-time-line [timeLineContent]="(content$ | async) ?? []"></lib-time-line>
 </lib-page-layout>
-
-<ng-template #timeLine>
-    <div #timeLineImage></div>
-</ng-template>

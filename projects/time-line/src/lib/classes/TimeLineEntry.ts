@@ -1,4 +1,4 @@
-import { Content } from "../interfaces/Content";
+import { Content } from "./Content";
 import { Coordinates } from "./Coordinates";
 import { MetaData } from "./MetaData";
 

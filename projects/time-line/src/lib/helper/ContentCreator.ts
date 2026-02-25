@@ -1,12 +1,18 @@
-import { Coordinates } from "./classes/Coordinates";
-import { TimeLineEntry } from "./classes/TimeLineEntry";
-import { EImagePosition } from "./enums/EImagePosition";
-import { Content } from "./interfaces/Content";
-import { ContentHeight, EntryMinLength, PaddingToLines, StrokeDefaultColor, StrokeHighlightColor } from "./TimeLineDefaults";
+import { Injectable } from "@angular/core";
+import { FileDownloadService } from "../services/file-download.service";
+import { EntryMinLength, StrokeDefaultColor, StrokeHighlightColor, ImageHeight } from "./TimeLineDefaults";
 import { TimeLineHelper } from "./TimeLineHelper";
+import { TimeLineEntry } from "../classes/TimeLineEntry";
+import { Content } from "../classes/Content";
+import { Coordinates } from "../classes/Coordinates";
+import { MetaData } from "../classes/MetaData";
+import { EImagePosition } from "../enums/EImagePosition";
+import { EHtmlTag } from "../enums/EHtmlElement";
 
+@Injectable()
 export class ContentCreator {
     private helper = new TimeLineHelper();
+    constructor(private fileDownloadService: FileDownloadService) {}
 
     drawContent(entries: TimeLineEntry[], i: number, svg: Element) {
         const entry = entries[i];
@@ -16,36 +22,41 @@ export class ContentCreator {
             return;
 
         const isLastEntryAndNotFinished = i + 1 === entries.length && !entry.content.to;
-        var contentElement = this.createContentElement(entry, entryElement.getBBox(), isLastEntryAndNotFinished);
-        entryElement.appendChild(contentElement);
+        var contentElement = this.createContentElement(entry, isLastEntryAndNotFinished);
+
+        entry.data.position === EImagePosition.bottom
+            ? entryElement.appendChild(contentElement)
+            : entryElement.prepend(contentElement);
     }
 
-    private createContentElement(entry: TimeLineEntry, bbox: DOMRect, isLastEntryAndNotFinished: boolean): Element {
+    private createContentElement(entry: TimeLineEntry, isLastEntryAndNotFinished: boolean): Element {
         const width = isLastEntryAndNotFinished
             ? entry.data.length
             : entry.data.length + EntryMinLength;
-        const centerCoordinates = this.getTopLeftCoordinates(entry.data.position, bbox, width, entry.data.length);
+        const centerCoordinates = this.getTopLeftCoordinates(width, entry.data);
+        const height = this.getContentHeight(entry.data.coordinates.y);
 
-        // ToDo: calculate maximum height of content
-        var foreignElement = this.helper.createForeignObject(centerCoordinates, width, ContentHeight);
+        var foreignElement = this.helper.createSvgForeignObject(centerCoordinates, width, height);
         this.addContent(foreignElement, entry.content, entry.data.position);
         return foreignElement;
     }
 
-    private getTopLeftCoordinates(position: EImagePosition, bbox: DOMRect, width: number, entryLength: number): Coordinates {
-        const x = bbox.x + entryLength / 2 - width / 2
-        const y = position === EImagePosition.bottom
-            ? bbox.y + bbox.height + PaddingToLines
-            : bbox.y - ContentHeight - PaddingToLines;
+    private getContentHeight(y: number): number {
+        return Math.abs(ImageHeight/2 - Math.abs(y));
+    }
+
+    private getTopLeftCoordinates(width: number, data: MetaData): Coordinates {
+        const x = data.coordinates.x + data.length / 2 - width / 2
+        const y = data.position === EImagePosition.bottom
+            ? data.coordinates.y
+            : - ImageHeight/2;
 
         return new Coordinates(x, y);
     }
 
     private addContent(foreignElement: Element, content: Content, position: EImagePosition) {
-        const XHTML_NS = "http://www.w3.org/1999/xhtml";
 
-        const container = document.createElementNS(XHTML_NS, "div");
-        container.setAttribute("xmlns", XHTML_NS);
+        const container = this.helper.createHtmlElement(EHtmlTag.div);
 
         container.style.fontFamily = "myFont";
         container.style.fontSize = "10px";
@@ -57,38 +68,48 @@ export class ContentCreator {
         container.style.justifyContent = position === EImagePosition.bottom
             ? "flex-start"
             : "flex-end";
+
         container.style.position = "relative";
 
         if (content.label) {
-            const label = document.createElementNS(XHTML_NS, "div");
+            const label = this.helper.createHtmlElement(EHtmlTag.span);
             label.textContent = content.label;
-            // Todo: add line break
+            label.style.marginTop = '0.5rem';
+            label.style.wordBreak = "break-word";
+            label.style.overflowWrap = "break-word";
+            label.style.hyphens = "auto";
             label.style.fontWeight = "bold";
             label.style.textAlign = "center";
             label.style.color = StrokeHighlightColor;
             container.appendChild(label);
         }
 
-        const where = document.createElementNS(XHTML_NS, "div");
+        const where = this.helper.createHtmlElement(EHtmlTag.div);
         where.innerHTML = `
             <strong style="font-size:7pt">${content.where.name}</strong><br/>
-            <span style="color:gray; font-size:7pt">${content.where.address}</span>
+            <span style="color:gray; font-size:7pt; word-break: break-word">${content.where.address}</span>
         `;
         where.style.textAlign = "center";
+        if (!content.label){
+            where.style.marginTop = "0.5rem";
+        }
         container.appendChild(where);
 
         if (content.completion) {
-            const completion = document.createElementNS(XHTML_NS, "div");
+            const completion = this.helper.createHtmlElement(EHtmlTag.span);
             completion.textContent = content.completion;
             completion.style.fontStyle = "italic";
             completion.style.color = StrokeHighlightColor;
             completion.style.fontSize = "9pt";
+            completion.style.wordBreak = "break-word";
+            completion.style.overflowWrap = "break-word";
+            completion.style.hyphens = "auto";
             completion.style.textAlign = "center";
             completion.style.marginTop = "0.25rem";
             container.appendChild(completion);
         }
 
-        const date = document.createElementNS(XHTML_NS, "div");
+        const date = this.helper.createHtmlElement(EHtmlTag.span);
         date.textContent = this.getDisplayedTimeRange(content.from, content.to);
         date.style.position = "relative";
         date.style.height = "1.25rem";
@@ -97,19 +118,17 @@ export class ContentCreator {
         date.style.display = "flex";
         date.style.alignItems = "center";
         date.style.justifyContent = "center";
+        date.style.marginBottom = "0.25rem";
         if (content.downloads?.length) {
-            const button = this.createDownloadButton();
+            const button = this.createDownloadButton(content.downloads);
             date.appendChild(button);
         }
         container.appendChild(date);
-
-
         foreignElement.appendChild(container);
     }
 
-    private createDownloadButton() {
-        const SVG_NS = "http://www.w3.org/2000/svg";
-        const svgIcon = document.createElementNS(SVG_NS, "svg");
+    private createDownloadButton(downloads: string[]) {
+        const svgIcon = this.helper.createSvgElement() as HTMLElement;
         svgIcon.setAttribute("viewBox", "0 0 24 24");
         svgIcon.setAttribute("width", "20");
         svgIcon.setAttribute("height", "20");
@@ -120,14 +139,18 @@ export class ContentCreator {
         svgIcon.style.bottom = "0";
         svgIcon.style.borderRadius = "8px";
 
-        const path = document.createElementNS(SVG_NS, "path");
-        path.setAttribute("d", "M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z");
+        const d = "M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z";
+        const path = this.helper.createSvgPathElement(d);
         path.setAttribute("fill", StrokeHighlightColor);
         svgIcon.appendChild(path);
 
+        if (downloads.length > 1){
+            // ToDo: add Number of downloads to download icon
+        }
+
         svgIcon.addEventListener("click", (e) => {
             e.stopPropagation();
-            console.log("Download clicked!");
+            this.fileDownloadService.downloadFiles(downloads);
         });
 
         svgIcon.addEventListener("mouseenter", () => {
@@ -143,17 +166,18 @@ export class ContentCreator {
     private getDisplayedTimeRange(from: Date, to?: Date): string {
         if (!to) {
             // ToDo: add translation
-            return 'seit ' + this.getMonthYear(from);
+            const prefix = from < new Date() ? 'seit' : 'ab';
+            return [prefix, this.getMonthYear(from)].join(' ');
         }
 
         const fromYear = from.getFullYear();
         const toYear = to.getFullYear();
 
-        return fromYear === toYear ? fromYear.toString() : `${fromYear}-${toYear}`;
+        return fromYear === toYear ? fromYear.toString() : `${fromYear} - ${toYear}`;
     }
 
     private getMonthYear(from: Date): string {
-        const month = from.getMonth();
+        const month = from.getMonth() + 1;
         const year = from.getFullYear();
         return month + '/' + year;
     }

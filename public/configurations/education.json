@@ -2,7 +2,7 @@
   {
     "school": {
       "name": "Volksschule Weiler",
-      "address": "Kirchweg 3, 6837 Weiler"
+      "address": "6837 Weiler"
     },
     "from": "1996-09-01T00:00:00+02:00",
     "to": "2000-07-01T23:59:59+02:00"
@@ -10,7 +10,7 @@
   {
     "school": {
       "name": "Hauptschule Klaus-Weiler-Fraxern",
-      "address": "Treietstraße 17b, 6833 Klaus"
+      "address": "6833 Klaus"
     },
     "from": "2000-09-01T00:00:00+02:00",
     "to": "2004-07-01T23:59:59+02:00"
@@ -18,7 +18,7 @@
   {
     "school": {
       "name": "HLW Feldkirch",
-      "address": "Ardetzenbergstraße 31, 6800 Feldkirch"
+      "address": "6800 Feldkirch"
     },
     "from": "2004-09-01T00:00:00+02:00",
     "to": "2009-07-01T00:00:00+02:00",
@@ -28,12 +28,21 @@
   {
     "school": {
       "name": "Universität Innsbruck",
-      "address": "Innrain 52, 6020 Innsbruck"
+      "address": "6020 Innsbruck"
     },
     "subject": "Mathematik",
-    "downloads": ["certificates/bsc-mathematic"],
+    "downloads": ["certificates/bachelor-degree", "certificates/bachelor-certificate"],
     "from": "2019-10-01T00:00:00+02:00",
     "to": "2023-09-31T00:00:00+02:00",
-    "degree": "BSc"
+    "degree": "Bachelor of Science"
+  },
+  {
+    "school": {
+      "name": "Fernuniversität Hagen",
+      "address": "58097 Hagen, Deutschland"
+    },
+    "subject": "Data Science",
+    "from": "2026-10-30T00:00:00+02:00",
+    "degree": "Master of Science"
   }
 ]

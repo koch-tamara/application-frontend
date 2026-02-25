@@ -18,6 +18,9 @@
       "page-layout": [
         "./dist/page-layout"
       ],
+      "time-line": [
+        "./dist/time-line"
+      ],
       "timeline": [
         "./dist/timeline"
       ]
@@ -37,13 +40,7 @@
       "path": "./projects/page-layout/tsconfig.lib.json"
     },
     {
-      "path": "./projects/page-layout/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/timeline/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/timeline/tsconfig.spec.json"
+      "path": "./projects/time-line/tsconfig.lib.json"
     }
   ]
 }

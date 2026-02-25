@@ -141,38 +141,26 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "projects/page-layout/tsconfig.spec.json"
-          }
         }
       }
     },
-    "timeline": {
+    "time-line": {
       "projectType": "library",
-      "root": "projects/timeline",
-      "sourceRoot": "projects/timeline/src",
+      "root": "projects/time-line",
+      "sourceRoot": "projects/time-line/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/timeline/tsconfig.lib.prod.json"
+              "tsConfig": "projects/time-line/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/timeline/tsconfig.lib.json"
+              "tsConfig": "projects/time-line/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "projects/timeline/tsconfig.spec.json"
-          }
         }
       }
     }
