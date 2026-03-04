@@ -11,16 +11,15 @@ export class TimeLineHelper {
     private svgNS = 'http://www.w3.org/2000/svg';
     private XHTML_NS = "http://www.w3.org/1999/xhtml";
 
-    createSvgElement(entries?: TimeLineEntry[], name?: string) {
+    createSvgElement(entries?: TimeLineEntry[], id?: string) {
         const svg = document.createElementNS(this.svgNS, 'svg');
         if (!entries)
             return svg;
 
-        svg.setAttribute('height', '100%');
         svg.setAttribute('viewBox', this.calculateBoundingBox(entries));
 
-        if (name) {
-            svg.setAttribute('id', name);
+        if (id) {
+            svg.setAttribute('id', id);
         }
         return svg;
     }

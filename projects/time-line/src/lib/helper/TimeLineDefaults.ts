@@ -1,5 +1,5 @@
-export const EntryMinLength = 55;
-export const EntryMaxLength = 75;
+export const EntryMinLength = 65;
+export const EntryMaxLength = 80;
 export const ContentHeight = 80;
 export const PaddingToLines = 4;
 export const ImagePadding = 10;
