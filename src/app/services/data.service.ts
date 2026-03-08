@@ -1,14 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { map, Observable } from 'rxjs';
 import { LocalConfigService } from './local-config.service';
 import { ApplicationContent } from '../data/data';
 import { Education } from '../data/ecucation';
 import { Experiance } from '../data/experience';
+import { Introduction } from '../data/introduction';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class DataService {
 
   private localConfigService = inject(LocalConfigService);
@@ -24,5 +22,9 @@ export class DataService {
 
   public getExperienceData(): Observable<Experiance[]>{
     return this.fetchConfigurations().pipe(map((data) => data.experience));
+  }
+
+  public getIntroductionData(): Observable<Introduction>{
+    return this.fetchConfigurations().pipe(map((data) => data.introduction))
   }
 }

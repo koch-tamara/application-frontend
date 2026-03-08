@@ -1,15 +1,23 @@
 import { Education } from "./ecucation";
 import { Experiance } from "./experience";
+import { Introduction } from "./introduction";
 
 export class ApplicationContent {
     customer: Customer;
     experience: Experiance[];
     education: Education[];
+    introduction: Introduction;
 
-    constructor(customer: Customer, experience: Experiance[], education: Education[]){
+    constructor(
+        customer: Customer, 
+        experience: Experiance[], 
+        education: Education[],
+        introduction: Introduction
+    ){
         this.customer = customer;
         this.experience = experience;
         this.education = education;
+        this.introduction = introduction;
     }
 }
 

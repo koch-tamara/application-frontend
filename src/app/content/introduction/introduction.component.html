@@ -1,17 +1,31 @@
 <lib-page-layout [imageInformation]="signatureImage" [addPadding]="true">
+    @switch(uiIntroductionState()){
+    @case('loading') {
+    <app-loading-spinner></app-loading-spinner>
+    }
+    @case('error') {
+    <app-error-response-message [error]="errorService.error()!"></app-error-response-message>
+    }
+    @case('ready') {
+    <ng-container [ngTemplateOutlet]="content" [ngTemplateOutletContext]="{ content: data()! }"></ng-container>
+    }
+    }
+</lib-page-layout>
+
+<ng-template #content let-content="content">
     <div class="application-letter">
         <div class="application-letter__header">
             <div class="application-letter__header__text">
-                {{ salutation }}
+                {{ content.company?.contact | getIntroductionHeader }}
             </div>
-            <div class="application-letter__header__logo">
+            <div class="application-letter__header__logo" *ngIf="content.company?.logo as logo">
                 <img [src]="logo.path" [alt]="logo.altText">
             </div>
         </div>
-        <div class="application-letter__content" [innerHTML]="content"></div>
+        <div class="application-letter__content" [innerHTML]="content.content | getFormattedContent"></div>
         <div class="application-letter__closing">
-            <div class="application-letter__closing--greeting">{{ greeting }}</div>
-            <div class="application-letter__closing--date">{{ date | date:'dd.MM.yyyy' }}</div>
+            <div class="application-letter__closing--greeting">{{ content?.greeting | getClosing }}</div>
+            <div class="application-letter__closing--date">{{ content.date | date:'dd.MM.yyyy' }}</div>
         </div>
     </div>
-</lib-page-layout>
+</ng-template>
