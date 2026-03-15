@@ -1,12 +1,14 @@
 {
   "name": "application-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "i18n": "ng extract-i18n",
+    "i18n:extract": "ng extract-i18n",
+    "i18n:merge": "xliffmerge --profile xliffmerge.json",
+    "i18n": "npm run i18n:extract && npm run i18n:merge",
     "test": "ng test"
   },
   "private": true,
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "^21.1.2",
     "@angular/platform-browser-dynamic": "^21.1.2",
     "@angular/router": "^21.1.2",
+    "ngx-i18nsupport": "^0.17.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
