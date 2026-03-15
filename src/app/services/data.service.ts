@@ -5,6 +5,7 @@ import { ApplicationContent } from '../data/data';
 import { Education } from '../data/ecucation';
 import { Experiance } from '../data/experience';
 import { Introduction } from '../data/introduction';
+import { Skills } from '../data/skills';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
@@ -25,6 +26,11 @@ export class DataService {
   }
 
   public getIntroductionData(): Observable<Introduction>{
-    return this.fetchConfigurations().pipe(map((data) => data.introduction))
+    return this.fetchConfigurations().pipe(map((data) => data.introduction));
   }
+
+  public getSkillsData(): Observable<Skills> {
+    return this.fetchConfigurations().pipe(map((data) => data.skills));
+  }
+
 }

@@ -1,8 +1,10 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <div class="containter-skill">
-        <div class="containter-skill__header" i18n="@@skills.hardSkills">Fachliche Qualifikationen</div>
+    <div class="container-skill">
+        <div class="container-skill__header" i18n="@@skills.hardSkills">Fachliche Qualifikationen</div>
+        <app-skills-assessment [assessments]="skills()?.hardSkills ?? []"></app-skills-assessment>
     </div>
-    <div class="containter-skill">
-        <div class="containter-skill__header" i18n="@@skills.softSkills">Persönliche Eigenschaften</div>
+    <div class="container-skill">
+        <div class="container-skill__header" i18n="@@skills.softSkills">Persönliche Eigenschaften</div>
+        <app-skills-assessment [assessments]="skills()?.softSkills ?? []"></app-skills-assessment>
     </div>
 </lib-page-layout>

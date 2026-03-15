@@ -1,4 +1,4 @@
-import { DatePipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { DatePipe, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { ImageInformation, PageLayout } from 'page-layout';
 import { DataService } from '../../services/data.service';
@@ -19,7 +19,6 @@ import { GetFormattedContentPipe } from '../../pipes/get-formatted-content.pipe'
     LoadingSpinnerComponent,
     ErrorResponseMessageComponent,
     GetIntroductionHeaderPipe,
-    NgIf,
     GetClosingPipe,
     NgTemplateOutlet,
     GetFormattedContentPipe

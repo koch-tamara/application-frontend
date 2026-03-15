@@ -1,0 +1,38 @@
+
+$filled-rating: rgb(216, 117, 77);
+$empty-rating: rgba(216, 117, 77, 0.35);
+$rating-size: 1rem;
+
+.skills-assessments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    &__assessment {
+        display: flex;
+        justify-content: flex-start;
+        gap: .25rem;
+
+        &__label {
+            min-width: 15rem;
+        }
+
+        &__rating {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: .25rem;
+
+            &__value {
+                width: $rating-size;
+                height: $rating-size;
+                border-radius: 5rem;
+                background-color: $empty-rating;
+
+                &--filled {
+                    background-color: $filled-rating;
+                }
+            }
+        }
+    }
+}

@@ -32,4 +32,4 @@ export enum ESex {
 export type Sentence = string;
 export type Paragraph = Sentence[];
 export interface IntroductionContent extends Localized<Paragraph[]> {}
-export interface Greeting  extends Localized<string> {}
+export interface Greeting extends Localized<string> {}

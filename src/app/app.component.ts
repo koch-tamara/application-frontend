@@ -1,12 +1,9 @@
-import { Component, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
 import { ImageInformation, PageLayout } from 'page-layout';
 import { Tab } from './data/tab';
-import { Subscription } from 'rxjs';
-import { DataService } from './services/data.service';
-import { ApplicationContent } from './data/data';
 
 @Component({
   selector: 'app-root',

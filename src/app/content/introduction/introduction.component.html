@@ -18,9 +18,11 @@
             <div class="application-letter__header__text">
                 {{ content.company?.contact | getIntroductionHeader }}
             </div>
-            <div class="application-letter__header__logo" *ngIf="content.company?.logo as logo">
-                <img [src]="logo.path" [alt]="logo.altText">
-            </div>
+            @if(content.company?.logo){
+                <div class="application-letter__header__logo">
+                    <img [src]="content.company.logo.path" [alt]="content.company.logo.altText">
+                </div>
+            }
         </div>
         <div class="application-letter__content" [innerHTML]="content.content | getFormattedContent"></div>
         <div class="application-letter__closing">

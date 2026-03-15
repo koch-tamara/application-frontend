@@ -12,7 +12,7 @@ import { EHtmlTag } from "../enums/EHtmlElement";
 @Injectable()
 export class ContentCreator {
     private helper = new TimeLineHelper();
-    constructor(private fileDownloadService: FileDownloadService) {}
+    constructor(private fileDownloadService: FileDownloadService) { }
 
     drawContent(entries: TimeLineEntry[], i: number, svg: Element) {
         const entry = entries[i];
@@ -42,14 +42,14 @@ export class ContentCreator {
     }
 
     private getContentHeight(y: number): number {
-        return Math.abs(ImageHeight/2 - Math.abs(y));
+        return Math.abs(ImageHeight / 2 - Math.abs(y));
     }
 
     private getTopLeftCoordinates(width: number, data: MetaData): Coordinates {
         const x = data.coordinates.x + data.length / 2 - width / 2
         const y = data.position === EImagePosition.bottom
             ? data.coordinates.y
-            : - ImageHeight/2;
+            : - ImageHeight / 2;
 
         return new Coordinates(x, y);
     }
@@ -90,7 +90,7 @@ export class ContentCreator {
             <span style="color:gray; font-size:7pt; word-break: break-word">${content.where.address}</span>
         `;
         where.style.textAlign = "center";
-        if (!content.label){
+        if (!content.label) {
             where.style.marginTop = "0.5rem";
         }
         container.appendChild(where);
@@ -144,7 +144,7 @@ export class ContentCreator {
         path.setAttribute("fill", StrokeHighlightColor);
         svgIcon.appendChild(path);
 
-        if (downloads.length > 1){
+        if (downloads.length > 1) {
             // ToDo: add Number of downloads to download icon
         }
 
@@ -166,8 +166,12 @@ export class ContentCreator {
     private getDisplayedTimeRange(from: Date, to?: Date): string {
         if (!to) {
             // ToDo: add translation
-            const prefix = from < new Date() ? 'seit' : 'ab';
-            return [prefix, this.getMonthYear(from)].join(' ');
+            const isPast = from < new Date();
+            const prefix = isPast
+                ? `seit`
+                : `ab`;
+
+            return `${prefix} ${this.getMonthYear(from)}`;
         }
 
         const fromYear = from.getFullYear();

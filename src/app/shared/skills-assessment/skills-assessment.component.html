@@ -1,0 +1,20 @@
+<div class="skills-assessments">
+    @for(assessment of assessments; track assessment.label){
+    <div class="skills-assessments__assessment">
+        <div class="skills-assessments__assessment__label">{{ assessment.label | getAssessmentLabel }}</div>
+        <ng-container [ngTemplateOutlet]="assessmentTemplate" [ngTemplateOutletContext]="{ $implicit: assessment.rating }">
+        </ng-container>
+    </div>
+    } @empty {
+        <span i18n="@@assessment.noAssessment">Es gibt keine Beurteilung</span>
+    }
+</div>
+
+<ng-template #assessmentTemplate let-assessment>
+    <div class="skills-assessments__assessment__rating">
+        @for(i of ratingRange; track i){
+            <div [style.color]="" class="skills-assessments__assessment__rating__value"
+            [ngClass]="{'skills-assessments__assessment__rating__value--filled': i < assessment}"></div>
+        }
+    </div>
+</ng-template>
