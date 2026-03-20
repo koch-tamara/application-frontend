@@ -1,4 +1,26 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <span page-header>Documents</span>
-    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio explicabo accusamus quisquam minus nisi, provident possimus cupiditate quidem aliquid libero alias reprehenderit sequi iusto nemo dolores tempore, repellendus amet? Ea?</span>
+    @if (downloads()) {
+    <span class="download-header" i18n="@@tabs.general">Allgemein</span>
+    <ul>
+        <li><app-download-item [label]="generalLabels.coverLetter"
+                (clicked)="onDownloadCoverLetter()"></app-download-item></li>
+        <li><app-download-item [label]="generalLabels.curriculumVitae"
+                (clicked)="onDownloadCurriculumVitae()"></app-download-item></li>
+    </ul>
+    <span class="download-header" i18n="@@tabs.experience">Erfahrung</span>
+    <ul>
+        @for(experience of downloads()?.experience; track experience.path){
+        <li><app-download-item [label]="experience.label" (clicked)="onDownload(experience)"></app-download-item></li>
+        }
+    </ul>
+    <span class="download-header" i18n="@@tabs.education">Ausbildung</span>
+    <ul>
+        @for(education of downloads()?.education; track education.path){
+        <li><app-download-item [label]="education.label" (clicked)="onDownload(education)"></app-download-item></li>
+        }
+    </ul>
+    }
+    @else {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </lib-page-layout>

@@ -8,6 +8,7 @@ import { Coordinates } from "../classes/Coordinates";
 import { MetaData } from "../classes/MetaData";
 import { EImagePosition } from "../enums/EImagePosition";
 import { EHtmlTag } from "../enums/EHtmlElement";
+import { DownloadInformation } from "../classes/DownloadInformation";
 
 @Injectable()
 export class ContentCreator {
@@ -127,7 +128,7 @@ export class ContentCreator {
         foreignElement.appendChild(container);
     }
 
-    private createDownloadButton(downloads: string[]) {
+    private createDownloadButton(downloads: DownloadInformation[]) {
         const svgIcon = this.helper.createSvgElement() as HTMLElement;
         svgIcon.setAttribute("viewBox", "0 0 24 24");
         svgIcon.setAttribute("width", "20");

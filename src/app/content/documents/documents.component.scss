@@ -1,0 +1,23 @@
+$hover-background: rgba(216, 117, 77, 0.1);
+
+.download {
+
+    &-header {
+        font-size: 13pt;
+        font-weight: bold;
+    }
+
+    &-icon {
+        position: absolute;
+        right: 0.25rem;
+        bottom: 0;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+        padding: 2px;
+        fill: #D8754D;
+    }
+
+    &-icon:hover {
+        background-color: rgba(63, 81, 181, 0.18);
+    }
+}

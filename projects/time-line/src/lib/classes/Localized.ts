@@ -1,4 +1,5 @@
+
 export type Localized<T> = {
-  de: T;
-  en: T;
+    de: T;
+    en: T;
 };

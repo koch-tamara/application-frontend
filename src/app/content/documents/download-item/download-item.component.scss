@@ -1,0 +1,17 @@
+.download-icon-container {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+
+    &__icon {
+        scale: 1.15;
+        border-radius: 1rem;
+        padding: .25rem;
+        fill: #D8754D;
+    }
+
+    &__icon:hover {
+        cursor: pointer;
+        background-color: #D8754D30;
+    }
+}

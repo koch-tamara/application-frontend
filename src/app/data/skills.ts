@@ -1,4 +1,4 @@
-import { Localized } from "./localizeType";
+import { Localized } from "../../../projects/time-line/src/public-api";
 
 export interface Skills {
     hardSkills: Assessment[];

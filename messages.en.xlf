@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="skills.hardSkills" datatype="html">
         <source>Fachliche Qualifikationen</source>
-        <target state="new">Fachliche Qualifikationen</target>
+        <target state="new">Hard Skills</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/content/skills/skills.component.html</context>
           <context context-type="linenumber">3,5</context>
@@ -12,10 +12,10 @@
       </trans-unit>
       <trans-unit id="skills.softSkills" datatype="html">
         <source>Persönliche Eigenschaften</source>
-        <target state="new">Persönliche Eigenschaften</target>
+        <target state="new">Soft Skills</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/content/skills/skills.component.html</context>
-          <context context-type="linenumber">6,8</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tabs.introduction" datatype="html">
@@ -72,6 +72,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/data/tab.ts</context>
           <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="assessment.noAssessment" datatype="html">
+        <source>Es gibt keine Beurteilung</source>
+        <target state="new">There is no assessment configured.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/skills-assessment/skills-assessment.component.html</context>
+          <context context-type="linenumber">9,13</context>
         </context-group>
       </trans-unit>
     </body>
