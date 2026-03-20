@@ -1,17 +1,17 @@
 import { ImageInformation } from "../../../projects/page-layout/src/public-api";
-import { Localized } from "./localizeType";
+import { Localized } from "../../../projects/time-line/src/public-api";
 import { Location } from "./locations";
 
 
 // ToDo: some company information are already configured in 'Customer'
 export interface Introduction {
-    company: Company; 
+    company: Company;
     content: IntroductionContent;
     date: Date;
     greeting?: Greeting;
 }
 
-export interface Company  {
+export interface Company {
     id: string;
     place: Location,
     contact?: Contact;
@@ -31,5 +31,5 @@ export enum ESex {
 
 export type Sentence = string;
 export type Paragraph = Sentence[];
-export interface IntroductionContent extends Localized<Paragraph[]> {}
-export interface Greeting extends Localized<string> {}
+export interface IntroductionContent extends Localized<Paragraph[]> { }
+export interface Greeting extends Localized<string> { }

@@ -32,7 +32,15 @@
       "address": "9435 Heerbrugg, Schweiz"
     },
     "employedAs": "Produktionsangestellte",
-    "downloads": ["employee-reference/escatec"],
+    "downloads": [
+      {
+        "label": {
+          "de": "Escatec Arbeitszeugnis",
+          "en": "Escatec Employment Certificate"
+        },
+        "path": "employee-reference/escatec"
+      }
+    ],
     "from": "2016-05-01T00:00:00+02:00",
     "to": "2019-07-31T00:00:00+02:00"
   },
@@ -78,7 +86,22 @@
       "address": "6850 Dornbirn"
     },
     "employedAs": "Software Engineer",
-    "downloads": ["employee-reference/servus-trainee-certificate", "employee-reference/servus"],
+    "downloads": [
+      {
+        "label": {
+          "de": "Servus Trainee Nachweis",
+          "en": "Servus trainee certificate"
+        },
+        "path": "employee-reference/servus-trainee-certificate"
+      },
+      {
+        "label": {
+          "de": "Servus Zwischenzeugnis",
+          "en": "Servus Interim employment evaluation"
+        },
+        "path": "employee-reference/servus"
+      }
+    ],
     "from": "2022-10-03T00:00:00+02:00"
   }
 ]

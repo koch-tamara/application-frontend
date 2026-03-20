@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ImageInformation, PageLayout } from 'page-layout';
 import { SkillsAssessmentComponent } from '../../shared/skills-assessment/skills-assessment.component';
 import { toSignal } from '@angular/core/rxjs-interop';

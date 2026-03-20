@@ -1,14 +1,15 @@
+import { DownloadInformation } from "./DownloadInformation";
 import { Place } from "./Place";
 
 export class Content {
   where: Place;
   from: Date;
   to?: Date;
-  downloads?: string[];
+  downloads?: DownloadInformation[];
   label?: string;
   completion?: string;
 
-  constructor(where: Place, from: Date, to?: Date, downloads?: string[], label?: string, completion?: string){
+  constructor(where: Place, from: Date, to?: Date, downloads?: DownloadInformation[], label?: string, completion?: string) {
     this.where = where;
     this.from = from;
     this.to = to;

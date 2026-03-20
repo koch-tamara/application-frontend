@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { DownloadInformation } from '../classes/DownloadInformation';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FileDownloadService {
 
-    downloadFiles(downloads: string[]) {
-        downloads.forEach((downloadUrl, index) => {
-            const urlParts = downloadUrl.split("/");
+    downloadFiles(downloads: DownloadInformation[]) {
+        downloads.forEach((download) => {
             const a = document.createElement("a");
-            a.href = `${downloadUrl}.pdf`;
-            a.download = `${urlParts[urlParts.length - 1]}.pdf`;
+            a.href = `${download.path}.pdf`;
+            // ToDo: use correct language for label
+            a.download = `${download.label.en}.pdf`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

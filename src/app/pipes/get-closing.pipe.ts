@@ -1,6 +1,6 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { Greeting } from '../data/introduction';
 import { LocalizationService } from '../services/localization.service';
+import { Localized } from '../../../projects/time-line/src/public-api';
 
 @Pipe({
   name: 'getClosing',
@@ -9,7 +9,7 @@ import { LocalizationService } from '../services/localization.service';
 export class GetClosingPipe implements PipeTransform {
   private i18n = inject(LocalizationService);
 
-  transform(value?: Greeting): string {
+  transform(value?: Localized<string>): string {
     return value
       ? this.i18n.get(value)
       : this.i18n.get({

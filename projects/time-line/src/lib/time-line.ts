@@ -13,7 +13,7 @@ import { FileDownloadService } from './services/file-download.service';
     .time-line-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       max-width: 100%;
       max-height: 100%;
     }
