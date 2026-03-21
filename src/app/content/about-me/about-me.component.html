@@ -1,4 +1,17 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <div page-header>About me</div>
-    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio explicabo accusamus quisquam minus nisi, provident possimus cupiditate quidem aliquid libero alias reprehenderit sequi iusto nemo dolores tempore, repellendus amet? Ea?</div>
+    <div class="about-me">
+        @if (data()?.description) {
+        <div class="about-me__description" [innerHTML]="data()!.description | getFormattedContent"></div>
+        }
+        @if (data()?.statements && data()?.statements?.length) {
+        <div class="about-me__statements">
+            @for(statement of data()!.statements; track statement.person ){
+            <app-statement-card [statement]="statement"></app-statement-card>
+            }
+        </div>
+        }
+        @else {
+        <app-loading-spinner></app-loading-spinner>
+        }
+    </div>
 </lib-page-layout>

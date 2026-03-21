@@ -3,10 +3,11 @@ import { ImageInformation, PageLayout } from 'page-layout';
 import { SkillsAssessmentComponent } from '../../shared/skills-assessment/skills-assessment.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DataService } from '../../services/data.service';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
 
 @Component({
   selector: 'app-skills',
-  imports: [PageLayout, SkillsAssessmentComponent],
+  imports: [PageLayout, SkillsAssessmentComponent, LoadingSpinnerComponent],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })

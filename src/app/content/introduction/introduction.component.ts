@@ -34,6 +34,7 @@ export class IntroductionComponent {
   private loadingService = inject(LoadingService);
 
   uiIntroductionState = computed(() => {
+    // toDo: use a ui state enum 
     if (this.loadingService.loading()) return 'loading';
     if (this.errorService.inErrorState()) return 'error';
     if (this.data()) return 'ready';

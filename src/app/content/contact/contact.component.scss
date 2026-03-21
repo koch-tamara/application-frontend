@@ -1,0 +1,19 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    gap: .5rem;
+
+    &__row {
+        display: flex;
+    }
+
+    &__key {
+        width: 12rem;
+        font-weight: bold;
+    }
+
+    &__value {
+        flex: 1
+    }
+}
