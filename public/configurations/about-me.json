@@ -1,0 +1,102 @@
+{
+    "info": {
+        "name": {
+            "firstName": "Tamara",
+            "lastName": "Koch",
+            "née": "Smith"
+        },
+        "address": "Littastraße 43, 6840 Götzis",
+        "eMail": "koch-tamara@live.at",
+        "phone": "+43 664 191 43 83",
+        "birthDate": "1990-03-30T22:04:00+01:00",
+        "materialStatus": {
+            "de": "ledig",
+            "en": "single"
+        },
+        "nationality": {
+            "de": "Österreich",
+            "en": "Austria"
+        }
+    },
+    "description": {
+        "de": [
+            [
+                "Als extrovertierter Mensch gehe ich offen auf andere zu und schätze gute Gespräche genauso wie gemeinsame Erlebnisse.",
+                "Ich habe ein großes Herz für Tiere und finde Ausgleich und Freude beim Gärtnern.",
+                "Sport gehört mehrmals pro Woche fest zu meinem Alltag und gibt mir Energie.",
+                "Außerdem liebe ich gutes Essen - ich koche gerne selber aber liebe es auch in verschiedene Restaurants essen zu gehen.",
+                "Reisen ist für mich eine große Leidenschaft, ich entdecke gerne neue Orte und Kulturen."
+            ],
+            [
+                "Beruflich als Entwickler unterwegs, bin ich dabei eher untypisch: Statt Gaming zieht es mich in meiner Freizeit nach draußen in die Natur.",
+                "Persönliche Weiterentwicklung ist mir wichtig - ich bin wissbegierig, offen für Neues und immer daran interessiert, mich weiterzuentwickeln."
+            ]
+        ],
+        "en": [
+            [
+                "As an extroverted person, I approach others openly and value good conversations just as much as shared experiences.",
+                "I have a big heart for animals and find balance and joy in gardening.",
+                "Sports are a regular part of my routine several times a week and give me energy.",
+                "I also love good food - I enjoy cooking myself but also love going out to try different restaurants.",
+                "Traveling is a great passion of mine; I enjoy discovering new places and cultures."
+            ],
+            [
+                "Professionally, I work as a developer, but I'm somewhat atypical: instead of gaming, I prefer spending my free time outdoors in nature.",
+                "Personal growth is important to me - I'm curious, open to new things, and always eager to keep developing myself."
+            ]
+        ]
+    },
+    "statements": [
+        {
+            "statement": {
+                "de": "DEUTSCH: aöjdflaj dfjdfkaj, dölkfj",
+                "en": "ENGLISCH: aöjdflaj dfjdfkaj, dölkfj"
+            },
+            "person": {
+                "name": "Carmen Koch",
+                "position": {
+                    "de": "Mutter",
+                    "en": "Mother"
+                },
+                "photo": {
+                    "path": "others/mam.jpg",
+                    "altText": "mother"
+                }
+            }
+        },
+        {
+            "statement": {
+                "de": "DEUTSCH: bbbbbbbbbbbbbbbbb, bbbbbbbbbbbb, bbbbbbbbbbbbb",
+                "en": "ENGLISCH: bbbbbbbbbbbbbbbbb, bbbbbbbbbbbb, bbbbbbbbbbbbb"
+            },
+            "person": {
+                "name": "Roland Hajny",
+                "position": {
+                    "de": "Escatec Arbeitskollege",
+                    "en": "Escatec colleague"
+                },
+                "photo": {
+                    "path": "others/roland.jpg",
+                    "altText": "Roland_Hajny"
+                }
+            }
+        },
+        {
+            "statement": {
+                "de": "DEUTSCH: bbbbbbbbbbbbbbbbb, bbbbbbbbbbbb, bbbbbbbbbbbbb, cccccccc,cccc",
+                "en": "ENGLISCH: bbbbbbbbbbbbbbbbb, bbbbbbbbbbbb, bbbbbbbbbbbbb, cccccccc,cccc"
+            },
+            "person": {
+                "name": "Daniel Kalb",
+                "position": {
+                    "de": "Servus - ehemaliger Teamleiter",
+                    "en": "Servus - former team lead"
+                },
+                "photo": {
+                    "path": "others/daniel.jpg",
+                    "altText": "Daniel_Kalb"
+                }
+            }
+        }
+    ]
+}

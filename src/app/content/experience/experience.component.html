@@ -1,3 +1,8 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <lib-time-line [timeLineContent]="(content$ | async) ?? []"></lib-time-line>
+    @if (content()) {
+    <lib-time-line [timeLineContent]="content()!"></lib-time-line>
+    }
+    @else {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </lib-page-layout>

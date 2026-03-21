@@ -1,4 +1,37 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    <span page-header>Contact</span>
-    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio explicabo accusamus quisquam minus nisi, provident possimus cupiditate quidem aliquid libero alias reprehenderit sequi iusto nemo dolores tempore, repellendus amet? Ea?</span>
+    @if(data()){
+    <div class="contact-container">
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.name">Name</div>
+            <div class="contact-container__value" [innerHTML]="data()!.name | getCompleteName"></div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.bornDate">Geburtsdatum</div>
+            <div class="contact-container__value">{{ data()!.birthDate | date:'dd.MM.yyyy' }}</div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.address">Adresse</div>
+            <div class="contact-container__value" [innerHTML]="data()!.address"></div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.eMail">E-Mail</div>
+            <div class="contact-container__value">{{ data()!.eMail }}</div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.mobile">Telefonnummer</div>
+            <div class="contact-container__value">{{ data()!.phone }}</div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.materialStatus">Familienstand</div>
+            <div class="contact-container__value">{{ data()!.materialStatus | useCorrectLanguage }}</div>
+        </div>
+        <div class="contact-container__row">
+            <div class="contact-container__key" i18n="@@contact.nationality">Nationalität</div>
+            <div class="contact-container__value">{{ data()!.nationality | useCorrectLanguage }}</div>
+        </div>
+    </div>
+    }
+    @else {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </lib-page-layout>

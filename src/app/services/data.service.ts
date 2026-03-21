@@ -7,6 +7,7 @@ import { Experiance } from '../data/experience';
 import { Introduction } from '../data/introduction';
 import { Skills } from '../data/skills';
 import { AllDownloads } from '../data/downloads';
+import { AboutMe } from '../data/about-me';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
@@ -60,6 +61,10 @@ export class DataService {
           })
         })
       );
+  }
+
+  public getPersonalInformation(): Observable<AboutMe> {
+    return this.fetchConfigurations().pipe(map((data) => data.aboutMe))
   }
 
 }

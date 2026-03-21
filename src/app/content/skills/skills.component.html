@@ -1,4 +1,5 @@
 <lib-page-layout [imageInformation]="signatureImage">
+    @if (skills()) {
     <div class="container-skill">
         <div class="container-skill__header" i18n="@@skills.hardSkills">Fachliche Qualifikationen</div>
         <app-skills-assessment [assessments]="skills()?.hardSkills ?? []"></app-skills-assessment>
@@ -7,4 +8,8 @@
         <div class="container-skill__header" i18n="@@skills.softSkills">Persönliche Eigenschaften</div>
         <app-skills-assessment [assessments]="skills()?.softSkills ?? []"></app-skills-assessment>
     </div>
+    }
+    @else {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </lib-page-layout>

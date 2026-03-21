@@ -1,0 +1,18 @@
+<div class="statement-container">
+    <div class="statement-container__statement">
+        {{ statement.statement | useCorrectLanguage }}
+    </div>
+    <div class="statement-container__person">
+        @if (statement.person.photo) {
+        <div class="statement-container__person__photo">
+            <img [src]="statement.person.photo.path" [alt]="statement.person.photo.altText">
+        </div>
+        }
+        <div class="statement-container__person__data">
+            <div class="statement-container__person__data__name">
+                {{ statement.person.name }}</div>
+            <div class="statement-container__person__data__position">
+                {{ statement.person.position | useCorrectLanguage }}</div>
+        </div>
+    </div>
+</div>
