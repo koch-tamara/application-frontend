@@ -12,7 +12,7 @@ export class Tab {
 
   private tabIdFromPath(path: string): ETabId {
     const values = Object.values(ETabId) as string[];
-    if (!values.includes(path)){
+    if (!values.includes(path)) {
       throw new Error("This path doesn't match with the allowed tab ids.")
     }
     return path as ETabId;
@@ -24,7 +24,6 @@ export class Tab {
     [ETabId.education, $localize`:@@tabs.education:Ausbildung`],
     [ETabId.skills, $localize`:@@tabs.skills:Fähigkeiten`],
     [ETabId.documents, $localize`:@@tabs.documents:Dokumente`],
-    [ETabId.aboutMe, $localize`:@@tabs.about-me:Über mich`],
     [ETabId.contact, $localize`:@@tabs.contact:Kontakt`]
   ]);
 }

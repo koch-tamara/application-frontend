@@ -14,29 +14,16 @@ import { UseCorrectLanguagePipe } from '../../pipes/use-correct-language.pipe';
   styleUrl: './documents.component.scss',
 })
 export class DocumentsComponent {
-  private dataService = inject(DataService);
+  dataService = inject(DataService);
   private useCorrectLanguage = new UseCorrectLanguagePipe();
 
   signatureImage: ImageInformation = {
     altText: 'Placeholder',
     path: 'placeholder_vertical.png',
   }
-  generalLabels = {
-    coverLetter: {
-      en: 'Cover letter',
-      de: 'Bewerbungsschreiben'
-    },
-    curriculumVitae: {
-      en: 'curriculumVitae',
-      de: 'Lebenslauf'
-    }
-  }
-
-  downloads = toSignal(this.dataService.getAllDocuments());
-
-  onDownloadCoverLetter() {
-    // ToDo: create cover letter when all tabs have been finished (all information are available)
-    console.log('add cover letter');
+  curriculumVitae = {
+    en: 'curriculumVitae',
+    de: 'Lebenslauf'
   }
 
   onDownloadCurriculumVitae() {

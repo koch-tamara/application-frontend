@@ -1,10 +1,10 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    @let content = data();
+    @let content = dataService.basics();
     @if(content){
     <div class="contact-container">
         <div class="contact-container__entry">
             <mat-icon>cake</mat-icon>
-            <span>{{ content.birthDate | date:'dd.MM.yyyy' }}</span>
+            <span>30.03.1990</span>
         </div>
         <div class="contact-container__entry">
             <mat-icon>home</mat-icon>
@@ -24,7 +24,7 @@
         </div>
         <div class="contact-container__entry">
             <mat-icon>flag</mat-icon>
-            <span>{{ content.nationality | useCorrectLanguage }}</span>
+            <span i18n="@@tabs.experience">Österreich</span>
         </div>
     </div>
     }

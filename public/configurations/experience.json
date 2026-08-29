@@ -5,8 +5,8 @@
       "address": "6833 Klaus"
     },
     "employedAs": "Leasing",
-    "from": "2010-09-01T00:00:00+02:00",
-    "to": "2011-05-31T23:59:59+02:00"
+    "from": "01.09.2010",
+    "to": "31.05.2011"
   },
   {
     "company": {
@@ -14,8 +14,8 @@
       "address": "6833 Weiler"
     },
     "employedAs": "Sachbearbeiterin",
-    "from": "2011-06-01T00:00:00+02:00",
-    "to": "2011-11-30T23:59:59+02:00"
+    "from": "01.06.2011",
+    "to": "30.11.2011"
   },
   {
     "company": {
@@ -23,8 +23,8 @@
       "address": "6833 Klaus"
     },
     "employedAs": "Graveurin",
-    "from": "2011-12-01T00:00:00+02:00",
-    "to": "2016-04-30T00:00:00+02:00"
+    "from": "01.12.2011",
+    "to": "30.04.2016"
   },
   {
     "company": {
@@ -41,44 +41,8 @@
         "path": "employee-reference/escatec"
       }
     ],
-    "from": "2016-05-01T00:00:00+02:00",
-    "to": "2019-07-31T00:00:00+02:00"
-  },
-  {
-    "company": {
-      "name": "Escatec Switzerland AG",
-      "address": "9435 Heerbrugg, Schweiz"
-    },
-    "employedAs": "Ferialjob",
-    "from": "2020-07-01T00:00:00+02:00",
-    "to": "2020-09-31T00:00:00+02:00"
-  },
-  {
-    "company": {
-      "name": "Leica Geosystems AG",
-      "address": "9435 Heerbrugg, Schweiz"
-    },
-    "employedAs": "Ferialjob - Lager",
-    "from": "2021-07-01T00:00:00+02:00",
-    "to": "2021-09-31T00:00:00+02:00"
-  },
-  {
-    "company": {
-      "name": "Escatec Switzerland AG",
-      "address": "9435 Heerbrugg, Schweiz"
-    },
-    "employedAs": "Ferialjob",
-    "from": "2022-07-01T00:00:00+02:00",
-    "to": "2022-08-15T00:00:00+02:00"
-  },
-  {
-    "company": {
-      "name": "Leica Geosystems AG",
-      "address": "9435 Heerbrugg, Schweiz"
-    },
-    "employedAs": "Ferialjob - Lager",
-    "from": "2022-08-16T00:00:00+02:00",
-    "to": "2022-09-31T00:00:00+02:00"
+    "from": "01.05.2016",
+    "to": "31.07.2019"
   },
   {
     "company": {
@@ -87,6 +51,13 @@
     },
     "employedAs": "Software Engineer",
     "downloads": [
+      {
+        "label": {
+          "de": "ISTQB Zertifikat",
+          "en": "ISTQB certificate"
+        },
+        "path": "certificates/ISTQB_certified_tester"
+      },
       {
         "label": {
           "de": "Servus Trainee Nachweis",
@@ -102,6 +73,7 @@
         "path": "employee-reference/servus"
       }
     ],
-    "from": "2022-10-03T00:00:00+02:00"
+    "from": "03.10.2022",
+    "to": "31.10.2026"
   }
 ]

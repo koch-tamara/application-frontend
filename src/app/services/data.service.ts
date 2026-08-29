@@ -1,70 +1,35 @@
-import { inject, Injectable } from '@angular/core';
-import { combineLatest, map, Observable } from 'rxjs';
+import { computed, inject, Injectable } from '@angular/core';
 import { LocalConfigService } from './local-config.service';
-import { ApplicationContent } from '../data/data';
-import { Education } from '../data/ecucation';
-import { Experiance } from '../data/experience';
-import { Introduction } from '../data/introduction';
-import { Skills } from '../data/skills';
-import { AllDownloads } from '../data/downloads';
-import { AboutMe } from '../data/about-me';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { DownloadInformation, Localized } from '../../../projects/time-line/src/public-api';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
 
-  private localConfigService = inject(LocalConfigService);
+  private readonly localConfigService = inject(LocalConfigService);
 
-  private fetchConfigurations(): Observable<ApplicationContent> {
-    // ToDo: switch later to fetch data from backend in development mode
-    return this.localConfigService.readLocalConfigurations();
-  }
+  private fetchConfiguration = toSignal(this.localConfigService.readConfigurations());
 
-  public getEducationData(): Observable<Education[]> {
-    return this.fetchConfigurations().pipe(map((data) => data.education));
-  }
+  public education = computed(() => this.fetchConfiguration()?.education);
+  public experience = computed(() => this.fetchConfiguration()?.experience);
+  public introduction = computed(() => this.fetchConfiguration()?.introduction);
+  public skills = computed(() => this.fetchConfiguration()?.skills);
+  public basics = computed(() => this.fetchConfiguration()?.basics);
 
-  public getExperienceData(): Observable<Experiance[]> {
-    return this.fetchConfigurations().pipe(map((data) => data.experience));
-  }
+  public documents = computed(() => {
+    return ({
+      experience: this.extractDownloads(this.experience() ?? []),
+      education: this.extractDownloads(this.education() ?? []),
+    })
+  });
 
-  public getIntroductionData(): Observable<Introduction> {
-    return this.fetchConfigurations().pipe(map((data) => data.introduction));
-  }
-
-  public getSkillsData(): Observable<Skills> {
-    return this.fetchConfigurations().pipe(map((data) => data.skills));
-  }
-
-  public getAllDocuments(): Observable<AllDownloads> {
-    return combineLatest([this.getExperienceData(), this.getEducationData()])
-      .pipe(
-        map(([experience, education]) => {
-          const experienceDownloads = experience
-            .filter(e => e.downloads && e.downloads.length > 0)
-            .flatMap(e =>
-              e.downloads.map(download => ({
-                label: download.label,
-                path: download.path
-              }))
-            );
-          const educationDownloads = education
-            .filter(e => e.downloads && e.downloads.length > 0)
-            .flatMap(e =>
-              e.downloads.map(download => ({
-                label: download.label,
-                path: download.path
-              }))
-            );
-          return ({
-            experience: experienceDownloads,
-            education: educationDownloads,
-          })
-        })
+  private extractDownloads<T extends { downloads: DownloadInformation[] }>(data: T[]): { label: Localized<string>, path: string }[] {
+    return data
+      .filter(e => e.downloads && e.downloads.length > 0)
+      .flatMap(e => e.downloads.map(download => ({
+        label: download.label,
+        path: download.path
+      }))
       );
   }
-
-  public getPersonalInformation(): Observable<AboutMe> {
-    return this.fetchConfigurations().pipe(map((data) => data.aboutMe))
-  }
-
 }

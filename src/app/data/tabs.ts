@@ -5,6 +5,5 @@ export enum ETabId {
     education = 'education',
     skills = 'skills',
     documents = 'documents',
-    aboutMe= 'about-me',
     contact = 'contact'
 }

@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ImageInformation, PageLayout } from 'page-layout';
 import { DataService } from '../../services/data.service';
-import { map } from 'rxjs';
 import { Content, Place, TimeLine } from '../../../../projects/time-line/src/public-api';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
+import { createDate } from '../../utils/create-date';
 
 @Component({
   imports: [PageLayout, TimeLine, LoadingSpinnerComponent],
@@ -21,13 +20,19 @@ export class ExperienceComponent {
     path: 'placeholder_horizontal.png',
   }
 
-  content = toSignal(this.dataService.getExperienceData()
-    .pipe(map((experience) => experience.map(entry => {
+  content = computed(() => {
+    const experienceList = this.dataService.experience();
+
+    if (experienceList == undefined)
+      return [];
+
+    return experienceList.map(entry => {
       return new Content(
         new Place(entry.company.name, entry.company.address),
-        new Date(entry.from),
-        entry.to ? new Date(entry.to) : undefined,
+        createDate(entry.from, entry.dateFormat),
+        entry.to ? createDate(entry.to, entry.dateFormat) : undefined,
         entry.downloads,
         entry.employedAs);
-    }))));
+    })
+  });
 }

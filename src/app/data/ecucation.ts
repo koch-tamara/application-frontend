@@ -3,10 +3,11 @@ import { Location } from "./locations"
 
 export interface Education {
     school: Location,
-    from: Date,
-    to: Date,
+    from: string,
+    to: string,
     downloads: DownloadInformation[],
     subject?: string,
-    degree?: string
+    degree?: string,
+    dateFormat?: string
 }
 

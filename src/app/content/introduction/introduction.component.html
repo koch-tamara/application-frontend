@@ -7,7 +7,8 @@
     <app-error-response-message [error]="errorService.error()!"></app-error-response-message>
     }
     @case('ready') {
-    <ng-container [ngTemplateOutlet]="content" [ngTemplateOutletContext]="{ content: data()! }"></ng-container>
+    <ng-container [ngTemplateOutlet]="content"
+        [ngTemplateOutletContext]="{ content: dataService.introduction()! }"></ng-container>
     }
     }
 </lib-page-layout>
@@ -15,19 +16,7 @@
 <ng-template #content let-content="content">
     <div class="application-letter">
         <div class="application-letter__header">
-            <div class="application-letter__header__text">
-                {{ $safeNavigationMigration(content.company?.contact) | getIntroductionHeader }}
-            </div>
-            @if(content.company?.logo){
-                <div class="application-letter__header__logo">
-                    <img [src]="content.company.logo.path" [alt]="content.company.logo.altText">
-                </div>
-            }
         </div>
         <div class="application-letter__content" [innerHTML]="content.content | getFormattedContent"></div>
-        <div class="application-letter__closing">
-            <div class="application-letter__closing--greeting">{{ $safeNavigationMigration(content?.greeting) | getClosing }}</div>
-            <div class="application-letter__closing--date">{{ content.date | date:'dd.MM.yyyy' }}</div>
-        </div>
     </div>
 </ng-template>

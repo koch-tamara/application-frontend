@@ -1,43 +1,46 @@
 import { inject, Injectable } from '@angular/core';
-import { ApplicationContent, Customer } from '../data/data';
+import { ApplicationContent } from '../data/data';
 import { Experiance } from '../data/experience';
 import { Education } from '../data/ecucation';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
 import { Introduction } from '../data/introduction';
 import { Skills } from '../data/skills';
-import { AboutMe } from '../data/about-me';
+import { Basics } from '../data/basic';
 
 @Injectable({ providedIn: 'root' })
 export class LocalConfigService {
 
   private http = inject(HttpClient);
 
-  private readonly customerUrl = 'configurations/customer.json';
-  private readonly educationUrl = 'configurations/education.json';
-  private readonly experienceUrl = 'configurations/experience.json';
-  private readonly introductionUrl = 'configurations/introduction.json';
-  private readonly skillsUrl = 'configurations/skills.json';
-  private readonly aboutMeUrl = 'configurations/about-me.json';
+  private readonly rootUrl = 'configurations';
 
-  public readLocalConfigurations(): Observable<ApplicationContent> {
+  private readonly educationFile = 'education';
+  private readonly experienceFile = 'experience';
+  private readonly introductionFile = 'introduction';
+  private readonly skillsFile = 'skills';
+  private readonly basicFile = 'basic';
+
+  public readConfigurations(): Observable<ApplicationContent> {
     return forkJoin({
-      customer: this.http.get<Customer>(this.customerUrl),
-      education: this.http.get<Education[]>(this.educationUrl),
-      experience: this.http.get<Experiance[]>(this.experienceUrl),
-      introduction: this.http.get<Introduction>(this.introductionUrl),
-      skills: this.http.get<Skills>(this.skillsUrl),
-      aboutMe: this.http.get<AboutMe>(this.aboutMeUrl),
+      education: this.http.get<Education[]>(this.buildConfigurationUrl(this.educationFile)),
+      experience: this.http.get<Experiance[]>(this.buildConfigurationUrl(this.experienceFile)),
+      introduction: this.http.get<Introduction>(this.buildConfigurationUrl(this.introductionFile)),
+      skills: this.http.get<Skills>(this.buildConfigurationUrl(this.skillsFile)),
+      basic: this.http.get<Basics>(this.buildConfigurationUrl(this.basicFile)),
     }).pipe(
       map(result =>
         new ApplicationContent(
-          result.customer,
           result.experience,
           result.education,
           result.introduction,
           result.skills,
-          result.aboutMe
+          result.basic
         )));
+  }
+
+  buildConfigurationUrl(fileName: string): string {
+    return `${this.rootUrl}/${fileName}.json`
   }
 }
 

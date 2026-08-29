@@ -12,12 +12,10 @@ import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component'
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
-  private dataService = inject(DataService);
+  dataService = inject(DataService);
 
   signatureImage: ImageInformation = {
     altText: 'Placeholder',
     path: 'placeholder_vertical.png',
   }
-
-  skills = toSignal(this.dataService.getSkillsData());
 }

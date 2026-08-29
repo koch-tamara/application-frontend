@@ -5,6 +5,7 @@ export interface Experiance {
     company: Location,
     downloads: DownloadInformation[],
     employedAs: string,
-    from: Date,
-    to: Date
+    from: string,
+    to: string,
+    dateFormat?: string,
 }

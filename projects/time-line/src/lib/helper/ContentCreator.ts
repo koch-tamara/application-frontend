@@ -87,8 +87,7 @@ export class ContentCreator {
 
         const where = this.helper.createHtmlElement(EHtmlTag.div);
         where.innerHTML = `
-            <strong style="font-size:7pt">${content.where.name}</strong><br/>
-            <span style="color:gray; font-size:7pt; word-break: break-word">${content.where.address}</span>
+            <strong style="font-size:7pt">${content.where.name}</strong>
         `;
         where.style.textAlign = "center";
         if (!content.label) {

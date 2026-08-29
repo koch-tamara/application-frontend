@@ -4,7 +4,6 @@ import { ExperienceComponent } from './content/experience/experience.component';
 import { EducationComponent } from './content/education/education.component';
 import { SkillsComponent } from './content/skills/skills.component';
 import { DocumentsComponent } from './content/documents/documents.component';
-import { AboutMeComponent } from './content/about-me/about-me.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { ETabId } from './data/tabs';
 
@@ -28,10 +27,6 @@ export const routes: Routes = [
     {
         path: ETabId.documents,
         component: DocumentsComponent
-    },
-    {
-        path: ETabId.aboutMe,
-        component: AboutMeComponent
     },
     {
         path: ETabId.contact,
