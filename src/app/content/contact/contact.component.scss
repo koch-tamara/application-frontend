@@ -4,16 +4,13 @@
     line-height: 1.5;
     gap: .5rem;
 
-    &__row {
+    &__entry {
         display: flex;
-    }
+        gap: 1rem;
+        align-items: center;
 
-    &__key {
-        width: 12rem;
-        font-weight: bold;
-    }
-
-    &__value {
-        flex: 1
+        span {
+            word-break: normal;
+        }
     }
 }

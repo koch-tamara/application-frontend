@@ -1,33 +1,30 @@
 <lib-page-layout [imageInformation]="signatureImage">
-    @if(data()){
+    @let content = data();
+    @if(content){
     <div class="contact-container">
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.name">Name</div>
-            <div class="contact-container__value" [innerHTML]="data()!.name | getCompleteName"></div>
+        <div class="contact-container__entry">
+            <mat-icon>cake</mat-icon>
+            <span>{{ content.birthDate | date:'dd.MM.yyyy' }}</span>
         </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.bornDate">Geburtsdatum</div>
-            <div class="contact-container__value">{{ data()!.birthDate | date:'dd.MM.yyyy' }}</div>
+        <div class="contact-container__entry">
+            <mat-icon>home</mat-icon>
+            <span>{{ content.address }}</span>
         </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.address">Adresse</div>
-            <div class="contact-container__value" [innerHTML]="data()!.address"></div>
+        <div class="contact-container__entry">
+            <mat-icon>mail</mat-icon>
+            <a href="mailto:{{content.eMail}}">{{ content.eMail }}</a>
         </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.eMail">E-Mail</div>
-            <div class="contact-container__value">{{ data()!.eMail }}</div>
+        <div class="contact-container__entry">
+            <mat-icon>phone</mat-icon>
+            <a href="tel:{{ content.phone | internationalPhoneFormat }}">{{ content.phone }}</a>
         </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.mobile">Telefonnummer</div>
-            <div class="contact-container__value">{{ data()!.phone }}</div>
+        <div class="contact-container__entry">
+            <mat-icon>person</mat-icon>
+            <span>{{ content.materialStatus | useCorrectLanguage }}</span>
         </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.materialStatus">Familienstand</div>
-            <div class="contact-container__value">{{ data()!.materialStatus | useCorrectLanguage }}</div>
-        </div>
-        <div class="contact-container__row">
-            <div class="contact-container__key" i18n="@@contact.nationality">Nationalität</div>
-            <div class="contact-container__value">{{ data()!.nationality | useCorrectLanguage }}</div>
+        <div class="contact-container__entry">
+            <mat-icon>flag</mat-icon>
+            <span>{{ content.nationality | useCorrectLanguage }}</span>
         </div>
     </div>
     }

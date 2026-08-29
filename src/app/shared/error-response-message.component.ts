@@ -1,5 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-import { ErrorResponseService } from '../services/error-response.service';
+import { Component, Input } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -26,6 +25,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   providers: []
 })
 export class ErrorResponseMessageComponent {
-  @Input({ required: true}) error!: HttpErrorResponse;
+  @Input({ required: true }) error!: HttpErrorResponse;
   // ToDo: TEST
 }
