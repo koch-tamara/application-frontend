@@ -4,12 +4,12 @@ import { RouterLink, RouterLinkWithHref } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { SizeService } from './service/size.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RoutingService } from './service/routing.service';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 import { ETabId, Tab } from '../public-api';
 import { imageRoutingMapping } from './data/image';
+import { SizeService } from 'shared-models';
 
 @Component({
   selector: 'lib-page-layout',

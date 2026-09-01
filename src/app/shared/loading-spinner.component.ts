@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
     }
 
     .path {
-      stroke: #D8754D;
+      stroke: #8ac68a;
       stroke-linecap: round;
       animation: dash 1.5s ease-in-out infinite;
     }
@@ -66,4 +66,4 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class LoadingSpinnerComponent {}
+export class LoadingSpinnerComponent { }

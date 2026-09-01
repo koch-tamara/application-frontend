@@ -12,7 +12,7 @@
     "composite": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
   ],
   "exclude": [
     "**/*.spec.ts"

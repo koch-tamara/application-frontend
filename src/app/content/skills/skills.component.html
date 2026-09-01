@@ -1,14 +1,16 @@
-@let skills = dataService.skills();
-@if (skills != null) {
 <div class="container-skill">
-    <div class="container-skill__header" i18n="@@skills.hardSkills">Fachliche Qualifikationen</div>
-    <app-skills-assessment [assessments]="skills.hardSkills"></app-skills-assessment>
+    @let skills = dataService.skills();
+    @if (skills != null) {
+    <div class="container-skill__header">
+        <span i18n="@@skills.hardSkills">Fachliche Qualifikationen</span>
+        <app-skills-assessment [assessments]="skills.hardSkills"></app-skills-assessment>
+    </div>
+    <div class="container-skill__header">
+        <span i18n="@@skills.softSkills">Persönliche Eigenschaften</span>
+        {{ skills.softSkills | getListedSkills }}
+    </div>
+    }
+    @else {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </div>
-<div class="container-skill">
-    <div class="container-skill__header" i18n="@@skills.softSkills">Persönliche Eigenschaften</div>
-    {{ skills.softSkills | getListedSkills }}
-</div>
-}
-@else {
-<app-loading-spinner></app-loading-spinner>
-}

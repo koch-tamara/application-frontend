@@ -11,12 +11,12 @@ button {
 
     &:hover:not(:active):not([active-language="true"]) {
         cursor: pointer;
-        background-color: #8ac68a;
+        background-color: #8ac68a80;
     }
 
     &:active,
     &[active-language="true"] {
         font-weight: bold;
-        background-color: #2fcb00;
+        background-color: #8ac68a;
     }
 }

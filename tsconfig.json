@@ -57,6 +57,9 @@
     },
     {
       "path": "./projects/shared-models/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/page-layout/tsconfig.lib.spec.json"
     }
   ]
 }

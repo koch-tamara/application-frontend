@@ -1,22 +1,30 @@
 @let downloads = dataService.documents();
-@if (downloads) {
-<span class="download-header" i18n="@@tabs.documents.general">Allgemein</span>
-<ul>
-    <li><app-download-item [label]="curriculumVitae" (clicked)="onDownloadCurriculumVitae()" /></li>
-</ul>
-<span class="download-header" i18n="@@tabs.documents.experience">Erfahrung</span>
-<ul>
-    @for(experience of downloads.experience; track experience.path){
-    <li><app-download-item [label]="experience.label" (clicked)="onDownload(experience)" /></li>
+<div class="download-container">
+    @if (downloads) {
+    <div class="download-container__section">
+        <span i18n="@@tabs.documents.general">Allgemein</span>
+        <ul>
+            <li><app-download-item [label]="curriculumVitae" (clicked)="onDownloadCurriculumVitae()" /></li>
+        </ul>
+    </div>
+    <div class="download-container__section">
+        <span i18n="@@tabs.documents.experience">Erfahrung</span>
+        <ul>
+            @for(experience of downloads.experience; track experience.path){
+            <li><app-download-item [label]="experience.label" (clicked)="onDownload(experience)" /></li>
+            }
+        </ul>
+    </div>
+    <div class="download-container__section">
+        <span i18n="@@tabs.education">Ausbildung</span>
+        <ul>
+            @for(education of downloads.education; track education.path){
+            <li><app-download-item [label]="education.label" (clicked)="onDownload(education)" /></li>
+            }
+        </ul>
+    </div>
     }
-</ul>
-<span class="download-header" i18n="@@tabs.education">Ausbildung</span>
-<ul>
-    @for(education of downloads.education; track education.path){
-    <li><app-download-item [label]="education.label" (clicked)="onDownload(education)" /></li>
+    @else {
+    <app-loading-spinner />
     }
-</ul>
-}
-@else {
-<app-loading-spinner />
-}
+</div>

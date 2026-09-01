@@ -9,7 +9,7 @@ export class GetListedSkillsPipe implements PipeTransform {
   private i18n = inject(LocalizationService);
 
   transform(skills: { label: Localized<string> }[]): string {
-    skills.map(skill => this.i18n.get<string>(skill.label));
-    return skills.join(', ');
+    const translatedSkills = skills.map(skill => this.i18n.get<string>(skill.label));
+    return translatedSkills.join(', ');
   }
 }
