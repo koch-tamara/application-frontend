@@ -1,4 +1,4 @@
-import { ETabId } from "./tabs";
+import { ETabId } from "./enum";
 
 export interface image {
     altText: string;

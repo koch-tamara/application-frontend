@@ -4,13 +4,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "composite": true,
     "types": [
-      "jasmine",
-      "@angular/localize"
+      "vitest/globals"
     ]
   },
   "include": [
-    "src/**/*.spec.ts",
+    "src/**/*.ts",
     "src/**/*.d.ts"
   ],
   "angularCompilerOptions": {

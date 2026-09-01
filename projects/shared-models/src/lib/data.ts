@@ -1,3 +1,4 @@
+import { Localized } from "shared-models";
 
 export class Event {
   where: Place;
@@ -37,8 +38,3 @@ export interface DownloadInformation {
   path: string,
   label: Localized<string>
 }
-
-export type Localized<T> = {
-  de: T;
-  en: T;
-};

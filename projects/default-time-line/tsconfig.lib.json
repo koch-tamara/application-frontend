@@ -6,7 +6,10 @@
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
-    "types": [],
+    "types": [
+      "@angular/localize",
+      "vitest/globals"
+    ],
     "composite": true
   },
   "include": [

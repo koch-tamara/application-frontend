@@ -1,4 +1,4 @@
-import { DownloadInformation } from "../../../projects/time-line/src/public-api";
+import { DownloadInformation } from "shared-models";
 
 export interface AllDownloads {
     education: DownloadInformation[];

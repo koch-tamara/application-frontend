@@ -1,7 +1,7 @@
 import { inject, Service } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map, Observable } from 'rxjs';
-import { ETabId } from '../data/tabs';
+import { filter, map } from 'rxjs';
+import { ETabId } from '../data/enum';
 
 @Service()
 export class RoutingService {

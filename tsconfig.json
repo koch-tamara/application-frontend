@@ -16,18 +16,19 @@
     "moduleResolution": "bundler",
     "paths": {
       "default-time-line": [
-        "./dist/default-time-line"
+        "./projects/default-time-line/src/public-api.ts"
       ],
       "page-layout": [
-        "./dist/page-layout"
+        "./projects/page-layout/src/public-api.ts"
       ],
       "shared-models": [
-        "./dist/shared-models"
+        "./projects/shared-models/src/public-api.ts"
       ],
       "time-line": [
-        "./dist/time-line"
+        "./projects/time-line/src/public-api.ts"
       ]
     },
+    "types": [],
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022"
@@ -39,6 +40,12 @@
     "strictTemplates": true
   },
   "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
     {
       "path": "./projects/page-layout/tsconfig.lib.json"
     },

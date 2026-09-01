@@ -71,10 +71,18 @@
               "sourceMap": true
             },
             "en": {
-              "localize": ["en"]
+              "localize": [
+                "en"
+              ],
+              "optimization": false,
+              "sourceMap": true
             },
             "de": {
-              "localize": ["de"]
+              "localize": [
+                "de"
+              ],
+              "optimization": false,
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -105,29 +113,18 @@
             "outputPath": "",
             "targetFiles": [
               "messages.en.xlf"
+            ],
+            "include": [
+              "src/**/*.ts",
+              "src/**/*.html",
+              "projects/**/*.ts"
             ]
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "tsConfig": "tsconfig.spec.json"
           }
         }
       }

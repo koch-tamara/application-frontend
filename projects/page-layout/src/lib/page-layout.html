@@ -25,10 +25,10 @@
     </div>
 </div>
 
-<mat-menu #menu="matMenu">
-    @for (tab of tabIds; track $index) {
-    <button mat-menu-item [routerLink]="['/', tab]">
-        {{ tab | titlecase }}
+<mat-menu #menu="matMenu" panelClass="custom-page-menu">
+    @for (tab of tabs; track tab.id) {
+    <button mat-menu-item [routerLink]="['/', tab.id]">
+        {{ tab.label| titlecase }}
     </button>
     }
 </mat-menu>
