@@ -10,7 +10,9 @@
     "composite": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "../shared-models/src/lib/Place.ts",
+    "../shared-models/src/lib/data.ts"
   ],
   "exclude": [
     "**/*.spec.ts"

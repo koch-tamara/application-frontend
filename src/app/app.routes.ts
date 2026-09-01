@@ -5,7 +5,7 @@ import { EducationComponent } from './content/education/education.component';
 import { SkillsComponent } from './content/skills/skills.component';
 import { DocumentsComponent } from './content/documents/documents.component';
 import { ContactComponent } from './content/contact/contact.component';
-import { ETabId } from './data/tabs';
+import { ETabId } from '../../projects/page-layout/src/lib/data/tabs';
 
 export const routes: Routes = [
     {

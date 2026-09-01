@@ -7,7 +7,7 @@ export const BiggestYDistanceToImageCenter = 75;
 export const SmallestYDistanceToImageCenter = 20;
 export const SideDistanceToNearestEntry = 50;
 export const BezierRadius = 12;
-export const ImageHeight = 2*BiggestYDistanceToImageCenter + 2*PaddingToLines + 2*ContentHeight +2*ImagePadding;
+export const ImageHeight = 2 * BiggestYDistanceToImageCenter + 2 * PaddingToLines + 2 * ContentHeight + 2 * ImagePadding;
 
 export const StrokeDefaultColor = '#808080';
-export const StrokeHighlightColor = '#D8754D';
+export const StrokeHighlightColor = '#2fcb00';

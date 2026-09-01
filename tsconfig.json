@@ -15,14 +15,17 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "paths": {
+      "default-time-line": [
+        "./dist/default-time-line"
+      ],
       "page-layout": [
         "./dist/page-layout"
       ],
+      "shared-models": [
+        "./dist/shared-models"
+      ],
       "time-line": [
         "./dist/time-line"
-      ],
-      "timeline": [
-        "./dist/timeline"
       ]
     },
     "importHelpers": true,
@@ -41,6 +44,12 @@
     },
     {
       "path": "./projects/time-line/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/default-time-line/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/shared-models/tsconfig.lib.json"
     }
   ]
 }

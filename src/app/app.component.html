@@ -1,31 +1,3 @@
-<div class="app-container">
-    <div class="app-container__header">
-        <lib-page-layout [imageInformation]="signatureImage" [addPadding]="false">
-            <div page-header>
-                <div id="tabs" class="app-container__header__tabs">
-                    @for (tab of tabs; track $index) {
-                        <ng-container 
-                            [ngTemplateOutlet]="tabTemplate" 
-                            [ngTemplateOutletContext]="{ tab: tab }">
-                        </ng-container>
-                    }
-                </div>
-            </div>
-        </lib-page-layout>
-    </div>
-    <div class="app-container__body">
-        <router-outlet></router-outlet>
-    </div>
-</div>
-
-<ng-template #tabTemplate let-tab="tab">
-  <div
-    class="app-container__header__tabs__tab"
-    [routerLink]="tab.id"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    [id]="tab.id"
-  >
-    {{ tab.label }}
-  </div>
-</ng-template>
+<lib-page-layout [tabs]="tabs">
+    <router-outlet></router-outlet>
+</lib-page-layout>

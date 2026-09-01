@@ -1,4 +1,4 @@
-import { ETabId } from "./tabs";
+import { ETabId } from './tabs';
 
 export class Tab {
   id: ETabId;

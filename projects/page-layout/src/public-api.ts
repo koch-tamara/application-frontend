@@ -3,4 +3,4 @@
  */
 
 export * from './lib/page-layout';
-export * from './lib/data'
+export * from './lib/data/tab';

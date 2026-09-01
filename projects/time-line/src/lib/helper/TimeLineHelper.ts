@@ -1,5 +1,5 @@
 import { BezierData } from "../classes/BezierData";
-import { Content } from "../classes/Content";
+import { Event } from "../../../../shared-models/src/lib/data";
 import { Coordinates } from "../classes/Coordinates";
 import { TimeLineEntry } from "../classes/TimeLineEntry";
 import { EBezierDirection } from "../enums/EBezierDirection";
@@ -69,7 +69,7 @@ export class TimeLineHelper {
             entries[0])
     }
 
-    calculateContentPositions(content: Content[]): TimeLineEntry[] {
+    calculateContentPositions(content: Event[]): TimeLineEntry[] {
         const timeEntries: TimeLineEntry[] = [];
         for (let index = 0; index < content.length; index++) {
             const isLastEntry = index + 1 === content.length;

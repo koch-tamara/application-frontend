@@ -1,13 +1,13 @@
-import { Content } from "./Content";
+import { Event } from "shared-models";
 import { Coordinates } from "./Coordinates";
 import { MetaData } from "./MetaData";
 
 export class TimeLineEntry {
-    content: Content;
+    content: Event;
     data: MetaData;
     id: number;
 
-    constructor(content: Content, id: number, isLastEntry: boolean, previousData?: MetaData) {
+    constructor(content: Event, id: number, isLastEntry: boolean, previousData?: MetaData) {
         this.content = content;
         this.data = new MetaData(isLastEntry, content.to, previousData);
         this.id = id;

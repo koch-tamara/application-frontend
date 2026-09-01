@@ -1,8 +1,8 @@
-import { Localized } from "../../../projects/time-line/src/public-api";
+import { Localized } from "shared-models";
 
 export interface Skills {
     hardSkills: Assessment[];
-    softSkills: Assessment[];
+    softSkills: { label: Localized<string> }[];
 }
 
 export interface Assessment {

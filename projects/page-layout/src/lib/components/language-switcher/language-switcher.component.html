@@ -1,0 +1,7 @@
+<div class="language-switcher">
+    @for (language of config.supported; track language) {
+    <button [attr.active-language]="language === config.current" (click)="onLanguageChange(language)">
+        <span>{{ language | uppercase }}</span>
+    </button>
+    }
+</div>

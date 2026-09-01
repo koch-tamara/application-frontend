@@ -1,5 +1,3 @@
-$hover-background: rgba(216, 117, 77, 0.1);
-
 .download {
 
     &-header {
@@ -14,10 +12,9 @@ $hover-background: rgba(216, 117, 77, 0.1);
         border-radius: 8px;
         transition: background-color 0.2s ease;
         padding: 2px;
-        fill: #D8754D;
     }
 
     &-icon:hover {
-        background-color: rgba(63, 81, 181, 0.18);
+        background-color: #8ac68a;
     }
 }

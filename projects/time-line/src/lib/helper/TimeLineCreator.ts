@@ -3,7 +3,7 @@ import { LineCreator } from "./LineCreator";
 import { TimeLineHelper } from "./TimeLineHelper";
 import { ContentCreator } from "./ContentCreator";
 import { FileDownloadService } from "../services/file-download.service";
-import { Content } from "../classes/Content";
+import { Event } from "../../../../shared-models/src/lib/data";
 import { TimeLineEntry } from "../classes/TimeLineEntry";
 
 
@@ -15,7 +15,7 @@ export class TimeLineCreator {
     private lineCreator = new LineCreator();
     private contentCreator;
 
-    constructor(imageContainer: ElementRef<HTMLDivElement>, timeLineEntries: Content[], fileDownloadService: FileDownloadService) {
+    constructor(imageContainer: ElementRef<HTMLDivElement>, timeLineEntries: Event[], fileDownloadService: FileDownloadService) {
         this.imageContainer = imageContainer;
         this.entries = this.helper.calculateContentPositions(timeLineEntries);
         this.fileDownloadService = fileDownloadService;

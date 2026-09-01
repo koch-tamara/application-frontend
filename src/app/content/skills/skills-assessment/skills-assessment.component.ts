@@ -1,7 +1,7 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Assessment } from "../../data/skills";
-import { GetAssessmentLabelPipe } from '../../pipes/get-assessment-label.pipe';
+import { Assessment } from "../../../data/skills";
+import { GetAssessmentLabelPipe } from '../../../pipes/get-assessment-label.pipe';
 
 @Component({
   selector: 'app-skills-assessment',

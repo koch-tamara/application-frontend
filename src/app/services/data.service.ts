@@ -1,7 +1,7 @@
 import { computed, inject, Injectable } from '@angular/core';
 import { LocalConfigService } from './local-config.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { DownloadInformation, Localized } from '../../../projects/time-line/src/public-api';
+import { DownloadInformation, Localized } from 'shared-models';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {

@@ -6,9 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "i18n:extract": "ng extract-i18n",
-    "i18n:merge": "xliffmerge --profile xliffmerge.json",
-    "i18n": "npm run i18n:extract && npm run i18n:merge",
+    "i18n": "ng extract-i18n",
     "test": "ng test"
   },
   "private": true,
@@ -21,7 +19,6 @@
     "@angular/material": "^22.1.4",
     "@angular/platform-browser": "^22.1.4",
     "@angular/router": "^22.1.4",
-    "ngx-i18nsupport": "^0.7.3",
     "rxjs": "^7.8.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -40,6 +37,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-extract-i18n-merge": "^3.4.0",
     "ng-packagr": "^22.1.1",
     "typescript": "~6.0.3",
     "vitest": "^4.0.8"

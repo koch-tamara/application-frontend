@@ -1,6 +1,6 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
 import { LocalizationService } from '../services/localization.service';
-import { Localized } from '../../../projects/time-line/src/lib/classes/Localized';
+import { Localized } from 'shared-models';
 
 @Pipe({
   name: 'getAssessmentLabel',

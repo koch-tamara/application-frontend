@@ -1,0 +1,22 @@
+.language-switcher {
+    display: flex;
+    gap: .25rem;
+    padding: .5rem;
+    font-size: 11pt;
+}
+
+button {
+    padding: .25rem;
+    border-radius: .5rem;
+
+    &:hover:not(:active):not([active-language="true"]) {
+        cursor: pointer;
+        background-color: #8ac68a;
+    }
+
+    &:active,
+    &[active-language="true"] {
+        font-weight: bold;
+        background-color: #2fcb00;
+    }
+}

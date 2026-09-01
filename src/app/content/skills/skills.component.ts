@@ -1,21 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { ImageInformation, PageLayout } from 'page-layout';
-import { SkillsAssessmentComponent } from '../../shared/skills-assessment/skills-assessment.component';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { DataService } from '../../services/data.service';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
+import { GetListedSkillsPipe } from '../../pipes/get-listed-skills.pipe';
+import { SkillsAssessmentComponent } from './skills-assessment/skills-assessment.component';
 
 @Component({
   selector: 'app-skills',
-  imports: [PageLayout, SkillsAssessmentComponent, LoadingSpinnerComponent],
+  imports: [
+    SkillsAssessmentComponent,
+    LoadingSpinnerComponent,
+    GetListedSkillsPipe
+  ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
   dataService = inject(DataService);
-
-  signatureImage: ImageInformation = {
-    altText: 'Placeholder',
-    path: 'placeholder_vertical.png',
-  }
 }

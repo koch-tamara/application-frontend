@@ -1,18 +1,16 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
-import { ImageInformation, PageLayout } from 'page-layout';
-import { Tab } from './data/tab';
+import { Tab } from '../../projects/page-layout/src/lib/data/tab';
+import { PageLayout } from '../../projects/page-layout/src/public-api';
 
 @Component({
   selector: 'app-root',
   imports: [
-    CommonModule, 
-    RouterOutlet, 
-    PageLayout, 
-    RouterLinkWithHref, 
-    RouterLinkActive,
+    CommonModule,
+    RouterOutlet,
+    PageLayout,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -21,14 +19,9 @@ import { Tab } from './data/tab';
 
 export class AppComponent {
   tabs = routes
-  .filter(route => 
-    typeof route.path === 'string' &&
-    route.path !== '**' &&
-    route.path !== '')
-  .map(route => new Tab(route.path!))
-
-  signatureImage: ImageInformation = {
-    altText: 'Signature',
-    path: 'signature.svg',
-  }
+    .filter(route =>
+      typeof route.path === 'string' &&
+      route.path !== '**' &&
+      route.path !== '')
+    .map(route => new Tab(route.path!));
 }

@@ -1,5 +1,5 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { Localized } from '../../../projects/time-line/src/public-api';
+import { Localized } from 'shared-models';
 import { LocalizationService } from '../services/localization.service';
 
 @Pipe({

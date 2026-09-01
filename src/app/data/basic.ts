@@ -1,4 +1,4 @@
-import { Localized } from "../../../projects/time-line/src/public-api";
+import { Localized } from "shared-models";
 
 export interface Basics {
     address: string;

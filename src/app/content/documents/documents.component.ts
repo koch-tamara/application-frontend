@@ -1,15 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { ImageInformation, PageLayout } from 'page-layout';
 import { DataService } from '../../services/data.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
 import { DownloadItemComponent } from './download-item/download-item.component';
-import { DownloadInformation } from '../../../../projects/time-line/src/public-api';
+import { DownloadInformation } from 'shared-models';
 import { UseCorrectLanguagePipe } from '../../pipes/use-correct-language.pipe';
 
 @Component({
   selector: 'app-documents',
-  imports: [PageLayout, LoadingSpinnerComponent, DownloadItemComponent],
+  imports: [LoadingSpinnerComponent, DownloadItemComponent],
   templateUrl: './documents.component.html',
   styleUrl: './documents.component.scss',
 })
@@ -17,10 +15,6 @@ export class DocumentsComponent {
   dataService = inject(DataService);
   private useCorrectLanguage = new UseCorrectLanguagePipe();
 
-  signatureImage: ImageInformation = {
-    altText: 'Placeholder',
-    path: 'placeholder_vertical.png',
-  }
   curriculumVitae = {
     en: 'curriculumVitae',
     de: 'Lebenslauf'

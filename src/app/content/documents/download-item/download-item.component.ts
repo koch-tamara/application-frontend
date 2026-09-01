@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Localized } from '../../../../../projects/time-line/src/public-api';
+import { Localized } from 'shared-models';
 import { UseCorrectLanguagePipe } from '../../../pipes/use-correct-language.pipe';
 
 @Component({

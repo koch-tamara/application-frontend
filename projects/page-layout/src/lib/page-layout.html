@@ -1,17 +1,34 @@
 <div class="page-layout-container">
-    @if (imageInformation){
-        <div class="page-layout-container__image">
-            <img [src]="imageInformation!.path" [alt]="imageInformation!.altText">
+    <div class="page-layout-container__header">
+        <lib-language-switcher />
+        <mat-icon class="page-layout-container__header__menu" [matMenuTriggerFor]="menu">menu</mat-icon>
+    </div>
+    @let img = image();
+    <div class="page-layout-container__body">
+        @if(!isMobile() || displayedTab() == tabId.introduction){
+        <div class="page-layout-container__body__image">
+            <img [src]="img.path" [alt]="img.altText">
         </div>
-    }
-    <div class="page-layout-container__content"
-        [ngClass]="{ 'page-layout-container__content--padding': addPadding }">
-        <div class="page-layout-container__content__header">
-            <ng-content select="[page-header]"></ng-content>
-        </div>
-
-        <div class="page-layout-container__content__body">
-            <ng-content></ng-content>
+        }
+        <div class="page-layout-container__body__content">
+            @if (displayedTab() != tabId.introduction && isMobile()) {
+            <div class="page-layout-container__body__content__goBack">
+                <mat-icon (click)="goHome()">arrow_back</mat-icon>
+            </div>
+            }
+            <div class="page-layout-container__body__content__scroll-body">
+                <ng-content></ng-content>
+            </div>
         </div>
     </div>
+    <div class="page-layout-container__footer">
+    </div>
 </div>
+
+<mat-menu #menu="matMenu">
+    @for (tab of tabIds; track $index) {
+    <button mat-menu-item [routerLink]="['/', tab]">
+        {{ tab | titlecase }}
+    </button>
+    }
+</mat-menu>

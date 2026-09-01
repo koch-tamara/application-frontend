@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DownloadInformation } from '../classes/DownloadInformation';
+import { DownloadInformation } from 'shared-models';
 
 @Injectable({
     providedIn: 'root',

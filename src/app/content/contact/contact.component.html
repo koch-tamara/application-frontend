@@ -1,34 +1,32 @@
-<lib-page-layout [imageInformation]="signatureImage">
-    @let content = dataService.basics();
-    @if(content){
-    <div class="contact-container">
-        <div class="contact-container__entry">
-            <mat-icon>cake</mat-icon>
-            <span>30.03.1990</span>
-        </div>
-        <div class="contact-container__entry">
-            <mat-icon>home</mat-icon>
-            <span>{{ content.address }}</span>
-        </div>
-        <div class="contact-container__entry">
-            <mat-icon>mail</mat-icon>
-            <a href="mailto:{{content.eMail}}">{{ content.eMail }}</a>
-        </div>
-        <div class="contact-container__entry">
-            <mat-icon>phone</mat-icon>
-            <a href="tel:{{ content.phone | internationalPhoneFormat }}">{{ content.phone }}</a>
-        </div>
-        <div class="contact-container__entry">
-            <mat-icon>person</mat-icon>
-            <span>{{ content.materialStatus | useCorrectLanguage }}</span>
-        </div>
-        <div class="contact-container__entry">
-            <mat-icon>flag</mat-icon>
-            <span i18n="@@tabs.experience">Österreich</span>
-        </div>
+@let content = dataService.basics();
+@if(content){
+<div class="contact-container">
+    <div class="contact-container__entry">
+        <mat-icon>cake</mat-icon>
+        <span>30.03.1990</span>
     </div>
-    }
-    @else {
-    <app-loading-spinner></app-loading-spinner>
-    }
-</lib-page-layout>
+    <div class="contact-container__entry">
+        <mat-icon>home</mat-icon>
+        <span>{{ content.address }}</span>
+    </div>
+    <div class="contact-container__entry">
+        <mat-icon>mail</mat-icon>
+        <a href="mailto:{{content.eMail}}">{{ content.eMail }}</a>
+    </div>
+    <div class="contact-container__entry">
+        <mat-icon>phone</mat-icon>
+        <a href="tel:{{ content.phone | internationalPhoneFormat }}">{{ content.phone }}</a>
+    </div>
+    <div class="contact-container__entry">
+        <mat-icon>person</mat-icon>
+        <span>{{ content.materialStatus | useCorrectLanguage }}</span>
+    </div>
+    <div class="contact-container__entry">
+        <mat-icon>flag</mat-icon>
+        <span i18n="@@tabs.contact.nationality">Österreich</span>
+    </div>
+</div>
+}
+@else {
+<app-loading-spinner></app-loading-spinner>
+}

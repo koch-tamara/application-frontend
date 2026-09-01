@@ -1,6 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
-import { ImageInformation, PageLayout } from 'page-layout';
 import { DataService } from '../../services/data.service';
 import { LoadingService } from '../../services/loading.service';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
@@ -11,7 +10,6 @@ import { GetFormattedContentPipe } from '../../pipes/get-formatted-content.pipe'
 @Component({
   selector: 'app-introduction',
   imports: [
-    PageLayout,
     LoadingSpinnerComponent,
     ErrorResponseMessageComponent,
     NgTemplateOutlet,
@@ -34,9 +32,4 @@ export class IntroductionComponent {
     if (this.dataService.introduction()) return 'ready';
     return 'empty';
   });
-
-  signatureImage: ImageInformation = {
-    altText: 'Placeholder',
-    path: 'placeholder_vertical.png',
-  }
 }

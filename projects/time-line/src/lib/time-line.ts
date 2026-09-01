@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
-import { Content } from './classes/Content';
+import { Event } from 'shared-models';
 import { TimeLineCreator } from './helper/TimeLineCreator';
 import { FileDownloadService } from './services/file-download.service';
 
@@ -22,15 +22,15 @@ import { FileDownloadService } from './services/file-download.service';
 export class TimeLine {
   @ViewChild('timelineContainer', { static: true }) timelineContainer!: ElementRef<HTMLDivElement>;
 
-  private _content!: Content[];
-  @Input({ required: true }) set timeLineContent(value: Content[]) {
+  private _content!: Event[];
+  @Input({ required: true }) set events(value: Event[]) {
     this._content = value;
     new TimeLineCreator(
       this.timelineContainer,
-      this.timeLineContent,
+      this.events,
       this.fileDownloadService).drawImage();
   };
-  get timeLineContent() {
+  get events() {
     return this._content;
   }
   private fileDownloadService = inject(FileDownloadService);

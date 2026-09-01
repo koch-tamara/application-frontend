@@ -41,57 +41,31 @@
             "label": {
                 "de": "Zuverlässig",
                 "en": "Reliable"
-            },
-            "rating": 5
-        },
-        {
-            "label": {
-                "de": "Flexibel",
-                "en": "Flexible"
-            },
-            "rating": 5
+            }
         },
         {
             "label": {
                 "de": "Engagiert",
                 "en": "Committed"
-            },
-            "rating": 5.5
+            }
         },
         {
             "label": {
                 "de": "Lernbereit",
                 "en": "Eager to learn"
-            },
-            "rating": 5.5
+            }
         },
         {
             "label": {
                 "de": "Umgänglich",
                 "en": "Sociable"
-            },
-            "rating": 5
+            }
         },
         {
             "label": {
                 "de": "Kommunikativ",
                 "en": "Communicative"
-            },
-            "rating": 5
-        },
-        {
-            "label": {
-                "de": "Rechtschaffend",
-                "en": "Righteous"
-            },
-            "rating": 5
-        },
-        {
-            "label": {
-                "de": "Extrovertiert",
-                "en": "Extroverted"
-            },
-            "rating": 3
+            }
         }
     ]
 }
